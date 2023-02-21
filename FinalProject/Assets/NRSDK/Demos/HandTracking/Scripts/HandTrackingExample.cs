@@ -47,6 +47,7 @@ namespace NRKernal.NRExamples
             itemsCollector.ResetItems();
         }
 
+
         private void ShowRay()
         {
             NRInput.RaycastersActive = true;

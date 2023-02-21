@@ -36,6 +36,7 @@ namespace NRKernal
         private const float HAND_ROOT_LERP_SPEED = 12f;
         private static Vector3 HAND_ROOT_DEFAULT_LOCAL_POSITION = new Vector3(0.06f, -0.1f, 0.2f);
 
+
         public virtual bool RunService()
         {
             Init();
@@ -73,6 +74,7 @@ namespace NRKernal
             else
             {
                 m_TargetHandState = m_DefaultLostHandState;
+                
             }
             ApplyToTargetHandState(currentHandState, m_TargetHandState);
         }

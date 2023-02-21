@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenuScene.unity
-    guid: 911ab0f8c37c7084494f48efdec18fa1
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/NRSDK/Demos/HandTracking.unity
+    guid: 7d33c4a3bc8da9745acac0e1d62c44bf
   m_configObjects: {}
