@@ -1046,14 +1046,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handStateTracking: 0
   handJoint: 0
-  handEnum: 0
+  handEnum: 1
+  domainHand: 1
   _RightJointPose:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
   _LeftJointPose:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
-  domainHand: 0
   _RightPositionText: {fileID: 1577385023}
   _RightRotationText: {fileID: 1238871810}
   _LeftPositionText: {fileID: 382140102}

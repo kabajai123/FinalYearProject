@@ -8,13 +8,13 @@ public class JointPoint : MonoBehaviour
 {
     public HandState _RightHandState;
     public HandState _LeftHandState;
-    public HandState _reset;
-    public bool handStateTracking;
+
     public HandJointID handJoint;
     public HandEnum handEnum;
+    public ControllerHandEnum domainHand;
+
     public Pose _RightJointPose;
     public Pose _LeftJointPose;
-    public ControllerHandEnum domainHand;
 
     public TMP_Text _RightPositionText;
     public TMP_Text _RightRotationText;
@@ -24,21 +24,24 @@ public class JointPoint : MonoBehaviour
 
     void Start()
     {
+        //_RightHandState = NRInput.Hands.GetHandState(HandEnum.RightHand);
+        //_LeftHandState = NRInput.Hands.GetHandState(HandEnum.LeftHand);
         domainHand = NRInput.DomainHand;
     }
 
     void Update()
     {
-        //NRInput.GetPosition(domainHand[a]); 
-        Debug.LogError(domainHand);
-        UpdateJointPose();
+        //Debug.LogError(domainHand);
+        handPositionTracking();      
     }
 
 
-    public void UpdateJointPose()
+    public void handPositionTracking()
     {
         _RightHandState = NRInput.Hands.GetHandState(HandEnum.RightHand);
+        Debug.Log("RightHandState: " + _RightHandState.isTracked);
         _LeftHandState = NRInput.Hands.GetHandState(HandEnum.LeftHand);
+        Debug.Log("LeftHandState: " + _LeftHandState.isTracked);
 
         _RightJointPose = _RightHandState.GetJointPose(handJoint);
         _LeftJointPose = _LeftHandState.GetJointPose(handJoint);
@@ -48,17 +51,62 @@ public class JointPoint : MonoBehaviour
         transform.rotation = _RightJointPose.rotation;
         _RightRotationText.text = "Right Hand Rotation: " + _RightJointPose.rotation.ToString();
 
+        RightHandTracked();
+
         transform.position = _LeftJointPose.position;
         _LeftPositionText.text = "Left Hand Position: " + _LeftJointPose.position.ToString();
         transform.rotation = _LeftJointPose.rotation;
         _LeftRotationText.text = "Left Hand Rotation: " + _LeftJointPose.rotation.ToString();
 
-        //if(handStateTracking == false)
-        //{
-        //    _reset.Reset();
-        //    Debug.Log("handStateTracking: True");
-        //    _jointPose.position = transform.position;
-        //    _jointPose2.position = transform.position;
-        //}        
+        //Debug.LogWarning("_RightHandState: " + _RightHandState.isTracked);
+        //Debug.LogWarning("_RightHandState: " + _RightHandState.currentGesture);
+        //Debug.LogWarning("_LeftHandState: " + _LeftHandState.isTracked);
+        //Debug.LogWarning("_LeftHandState: " + _LeftHandState.currentGesture);
+        LeftHandTracked();
+    }
+
+    public void LeftHandTracked()
+    {
+        if (_LeftHandState.isTracked == true )
+        {
+
+        }
+        else
+        {
+            _LeftHandState.isTracked = false;
+            _LeftHandState.currentGesture = HandGesture.None;
+            if (_LeftHandState.isTracked == false && _LeftHandState.currentGesture == HandGesture.None)
+            {
+                Debug.LogError("handStateTracking: " + false);
+                _LeftHandState.Reset();
+                _LeftJointPose.position = transform.position;
+                _LeftPositionText.text = "Left Hand Position: " + _LeftJointPose.position.ToString();
+                _LeftJointPose.rotation = transform.rotation;
+                _LeftRotationText.text = "Left Hand Rotation: " + _LeftJointPose.rotation.ToString();
+            }
+        }
+    }
+
+    public void RightHandTracked()
+    {
+        if (_RightHandState.isTracked == true )
+        {
+
+        }
+        else
+        {
+            _RightHandState.isTracked = false;
+            _RightHandState.currentGesture = HandGesture.None;
+            if (_RightHandState.isTracked == false && _RightHandState.currentGesture == HandGesture.None)
+            {
+                Debug.LogError("handStateTracking: " + false);
+                _RightHandState.Reset();
+                _RightJointPose.position = transform.position;
+                _RightPositionText.text = "Right Hand Position: " + _RightJointPose.position.ToString();
+                _RightJointPose.rotation = transform.rotation;
+                _RightRotationText.text = "Right Hand Rotation: " + _RightJointPose.rotation.ToString();
+            }
+        }
     }
 }
+
