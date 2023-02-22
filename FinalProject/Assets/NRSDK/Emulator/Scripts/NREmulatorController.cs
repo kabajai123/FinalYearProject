@@ -10,6 +10,7 @@
 namespace NRKernal
 {
     using UnityEngine;
+    using UnityEngine.Networking;
 
 #if UNITY_EDITOR
     /// <summary> A controller for handling nr emulators. </summary>
@@ -50,6 +51,9 @@ namespace NRKernal
         private int m_TouchActionCurFrame;
         /// <summary> Target for the. </summary>
         private GameObject m_Target;
+
+        //Network 
+        public string CarIpAddress;
 
         /// <summary> Values that represent touch action states. </summary>
         enum TouchActionState
@@ -96,6 +100,7 @@ namespace NRKernal
             {
                 SetConfirmButton(true);
                 ImageConfirm.SetActive(true);
+                Send("0");
             }
             if (Input.GetMouseButtonUp(0))
             {
@@ -132,21 +137,25 @@ namespace NRKernal
                 {
                     ImageLeft.SetActive(true);
                     m_TouchAction = TouchActionState.Left;
+                    Send("2");
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     ImageRight.SetActive(true);
                     m_TouchAction = TouchActionState.Right;
+                    Send("3");
                 }
                 else if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     ImageUp.SetActive(true);
                     m_TouchAction = TouchActionState.Up;
+                    Send("1");
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     ImageDown.SetActive(true);
                     m_TouchAction = TouchActionState.Down;
+                    Send("6");
                 }
                 else if (Input.GetKeyUp(KeyCode.DownArrow)
                     | Input.GetKeyUp(KeyCode.UpArrow)
@@ -272,6 +281,14 @@ namespace NRKernal
                 EditorControllerProvider.SetControllerButtonState(ControllerButton.TRIGGER, 0);
                 EditorControllerProvider.SetControllerIsTouching(false);
             }
+        }
+        public void Send(string message)
+        {
+
+            string my_command = CarIpAddress + message;
+            Debug.Log(my_command);
+            UnityWebRequest www = UnityWebRequest.Get(my_command);
+            www.SendWebRequest();
         }
     }
 #endif
