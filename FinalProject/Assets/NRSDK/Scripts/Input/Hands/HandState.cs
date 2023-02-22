@@ -68,7 +68,10 @@ namespace NRKernal
         public readonly HandEnum handEnum;
         public bool isTracked;
         public Pose pointerPose;
+        public Pose JointPosition;
         public bool pointerPoseValid;
+       
+       
         //public bool isPinching => currentGesture == HandGesture.Pinch;
         public bool isPinching
         {
@@ -91,7 +94,7 @@ namespace NRKernal
 
         /// <summary> Reset the hand state to default. </summary>
         public void Reset()
-        {
+        {         
             isTracked = false;
             pointerPose = Pose.identity;
             pointerPoseValid = false;
