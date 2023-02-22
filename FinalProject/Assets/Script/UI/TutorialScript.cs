@@ -30,13 +30,13 @@ public class TutorialScript : MonoBehaviour
                 UpdateMessage.text = "Use your hands to turn left and right.";
                 break;
             case 1:
-                UpdateMessage.text = "Use this moveing to move the car.";
+                UpdateMessage.text = "Use this moving to move the car.";
                 break;
             case 2:
-                UpdateMessage.text = "Use this moveing to stop the car.";
+                UpdateMessage.text = "Use this moving to stop the car.";
                 break;
             case 3:
-                UpdateMessage.text = "Use this moveing to call menu.";
+                UpdateMessage.text = "Use this moving to call menu.";
                 break;
             case 4:
                 UpdateMessage.text = "Let try in the game!!! ";
