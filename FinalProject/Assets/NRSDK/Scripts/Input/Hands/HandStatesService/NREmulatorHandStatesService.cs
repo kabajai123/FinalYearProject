@@ -100,7 +100,7 @@ namespace NRKernal
                 return;
 
             m_DefaultLostHandState = CreateTestHandState_Lost_None(HandEnum.RightHand);
-            m_DefaultTrackedHandState = CreateTestHandState_Found_OpenHand(HandEnum.RightHand);
+            m_DefaultTrackedHandState = CreateTestHandState_Found_Stop(HandEnum.RightHand);
             m_TestHandStatesDict = new Dictionary<KeyCode, HandState>()
             {
                 {KeyCode.Mouse0, CreateTestHandState_Found_Pinch(HandEnum.RightHand)},
@@ -179,12 +179,12 @@ namespace NRKernal
             return handState;
         }
 
-        private HandState CreateTestHandState_Found_OpenHand(HandEnum handEnum)
+        private HandState CreateTestHandState_Found_Stop(HandEnum handEnum)
         {
             var handState = new HandState(handEnum);
             handState.isTracked = true;
-            handState.currentGesture = HandGesture.OpenHand;
-            HandJointPoseDataUtility.JsonToDict(HandJointsArrayData.HandJointsArrayData_Right_OpenHand_Json, handState.jointsPoseDict);
+            handState.currentGesture = HandGesture.Stop;
+            HandJointPoseDataUtility.JsonToDict(HandJointsArrayData.HandJointsArrayData_Right_Stop_Json, handState.jointsPoseDict);
             return handState;
         }
 

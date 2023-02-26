@@ -51,6 +51,8 @@ public class JointPoint : MonoBehaviour
         transform.rotation = _RightJointPose.rotation;
         _RightRotationText.text = "Right Hand Rotation: " + _RightJointPose.rotation.ToString();
 
+        //Debug.LogWarning("_RightHandState: " + _RightHandState.isTracked);
+        //Debug.LogWarning("_RightHandState: " + _RightHandState.currentGesture);
         RightHandTracked();
 
         transform.position = _LeftJointPose.position;
@@ -58,8 +60,6 @@ public class JointPoint : MonoBehaviour
         transform.rotation = _LeftJointPose.rotation;
         _LeftRotationText.text = "Left Hand Rotation: " + _LeftJointPose.rotation.ToString();
 
-        //Debug.LogWarning("_RightHandState: " + _RightHandState.isTracked);
-        //Debug.LogWarning("_RightHandState: " + _RightHandState.currentGesture);
         //Debug.LogWarning("_LeftHandState: " + _LeftHandState.isTracked);
         //Debug.LogWarning("_LeftHandState: " + _LeftHandState.currentGesture);
         LeftHandTracked();

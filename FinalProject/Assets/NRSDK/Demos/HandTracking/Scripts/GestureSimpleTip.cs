@@ -9,7 +9,7 @@ namespace NRKernal.NRExamples
     {
         public class GestureName
         {
-            public const string Gesture_Open_Hand = "Open Hand";
+            public const string Gesture_Stop = "Stop";
             public const string Gesture_Grab = "Grab";
             public const string Gesture_Pinch = "Pinch";
             public const string Gesture_Point = "Point";
@@ -37,8 +37,8 @@ namespace NRKernal.NRExamples
                 return;
             switch (handState.currentGesture)
             {
-                case HandGesture.OpenHand:
-                    gestureTxt.text = GetHandEnumLabel() + GestureName.Gesture_Open_Hand;
+                case HandGesture.Stop:
+                    gestureTxt.text = GetHandEnumLabel() + GestureName.Gesture_Stop;
                     break;
                 case HandGesture.Grab:
                     gestureTxt.text = GetHandEnumLabel() + GestureName.Gesture_Grab;

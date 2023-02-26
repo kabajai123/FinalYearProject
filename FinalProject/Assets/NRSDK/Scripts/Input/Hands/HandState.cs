@@ -23,7 +23,7 @@ namespace NRKernal
     public enum HandGesture
     {
         None = -1,
-        OpenHand,
+        Stop,
         Grab,
         Pinch,
         Point,

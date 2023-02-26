@@ -374,7 +374,7 @@ namespace NRKernal
             switch (gestureType)
             {
                 case NRGestureType.NR_GESTURE_TYPE_OPEN_HAND:
-                    return HandGesture.OpenHand;
+                    return HandGesture.Stop;
                 case NRGestureType.NR_GESTURE_TYPE_GRAB:
                     return HandGesture.Grab;
                 case NRGestureType.NR_GESTURE_TYPE_PINCH:
