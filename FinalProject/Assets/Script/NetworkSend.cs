@@ -2,22 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using NRKernal;
 
 public class NetworkSend : MonoBehaviour
 {
 
     public string CarIpAddress;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    public HandEnum handEnum;
     string input;
+
+
     private void Update()
     {
-
         input = Input.inputString;
-
 
         switch (input)
         {
@@ -36,8 +33,18 @@ public class NetworkSend : MonoBehaviour
             case "p":
                 Send("0");
                 break;
+
         }
 
+        var handState = NRInput.Hands.GetHandState(handEnum);
+        if (handState == null)
+            return;
+        switch (handState.currentGesture)
+        {
+            case HandGesture.Stop:
+                Send("0");
+                break;
+        }
 
     }
 
