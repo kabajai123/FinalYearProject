@@ -24,6 +24,8 @@ public class JointPoint : MonoBehaviour
 
     void Start()
     {
+        //_RightHandState = NRInput.Hands.GetHandState(HandEnum.RightHand);
+        //_LeftHandState = NRInput.Hands.GetHandState(HandEnum.LeftHand);
         domainHand = NRInput.DomainHand;
     }
 
