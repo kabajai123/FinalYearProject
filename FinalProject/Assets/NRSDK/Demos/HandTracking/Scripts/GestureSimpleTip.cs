@@ -12,10 +12,11 @@ namespace NRKernal.NRExamples
             public const string Gesture_Stop = "Stop";
             public const string Gesture_Grab = "Grab";
             public const string Gesture_Pinch = "Pinch";
-            public const string Gesture_Point = "Point";
+            public const string Gesture_UsingItem = "UsingItem";
             public const string Gesture_Victory = "Victory";
             public const string Gesture_Call = "Call";
             public const string Gesture_System = "System";
+            public const string Gesture_Good = "Good";
         }
 
         public HandEnum handEnum;
@@ -46,8 +47,8 @@ namespace NRKernal.NRExamples
                 case HandGesture.Pinch:
                     gestureTxt.text = GetHandEnumLabel() + GestureName.Gesture_Pinch;
                     break;
-                case HandGesture.Point:
-                    gestureTxt.text = GetHandEnumLabel() + GestureName.Gesture_Point;
+                case HandGesture.UsingItem:
+                    gestureTxt.text = GetHandEnumLabel() + GestureName.Gesture_UsingItem;
                     break;
                 case HandGesture.Victory:
                     gestureTxt.text = GetHandEnumLabel() + GestureName.Gesture_Victory;
@@ -57,6 +58,9 @@ namespace NRKernal.NRExamples
                     break;
                 case HandGesture.System:
                     gestureTxt.text = GetHandEnumLabel() + GestureName.Gesture_System;
+                    break;
+                case HandGesture.Good:
+                    gestureTxt.text = GetHandEnumLabel() + GestureName.Gesture_Good;
                     break;
                 default:
                     gestureTxt.text = string.Empty;

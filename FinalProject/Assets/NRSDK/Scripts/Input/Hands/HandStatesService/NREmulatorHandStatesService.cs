@@ -201,8 +201,8 @@ namespace NRKernal
         {
             var handState = new HandState(handEnum);
             handState.isTracked = true;
-            handState.currentGesture = HandGesture.Point;
-            HandJointPoseDataUtility.JsonToDict(HandJointsArrayData.HandJointsArrayData_Right_Point_Json, handState.jointsPoseDict);
+            handState.currentGesture = HandGesture.UsingItem;
+            HandJointPoseDataUtility.JsonToDict(HandJointsArrayData.HandJointsArrayData_Right_UsingItem_Json, handState.jointsPoseDict);
             return handState;
         }
 
@@ -212,6 +212,15 @@ namespace NRKernal
             handState.isTracked = true;
             handState.currentGesture = HandGesture.None;
             HandJointPoseDataUtility.JsonToDict(HandJointsArrayData.HandJointsArrayData_Right_SystemGesture_Json, handState.jointsPoseDict);
+            return handState;
+        }
+
+        private HandState CreateTestHandState_Found_Good(HandEnum handEnum)
+        {
+            var handState = new HandState(handEnum);
+            handState.isTracked = true;
+            handState.currentGesture = HandGesture.Good;
+            HandJointPoseDataUtility.JsonToDict(HandJointsArrayData.HandJointsArrayData_Right_Good_Json, handState.jointsPoseDict);
             return handState;
         }
 

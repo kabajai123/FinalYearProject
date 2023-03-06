@@ -17,7 +17,8 @@ public class TutorialScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (NRInput.GetButtonDown(ControllerButton.TRIGGER)){
+        if (NRInput.GetButtonDown(ControllerButton.TRIGGER) || Input.GetKeyDown(KeyCode.G))
+        {
             UpdateMessageFunction();
         }
     }

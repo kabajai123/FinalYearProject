@@ -26,10 +26,11 @@ namespace NRKernal
         Stop,
         Grab,
         Pinch,
-        Point,
+        UsingItem,
         Victory,
         Call,
         System,
+        Good,
     }
 
     public enum HandJointID

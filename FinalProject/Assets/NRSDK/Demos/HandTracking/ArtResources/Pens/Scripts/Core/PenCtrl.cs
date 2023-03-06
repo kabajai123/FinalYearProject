@@ -13,7 +13,7 @@ public class PenCtrl : MonoBehaviour
         if (!NRInput.Hands.IsRunning)
             return;
         var handState = NRInput.Hands.GetHandState(handEnum);
-        pen.IsDrawing = (handState.currentGesture == HandGesture.Point);
+        pen.IsDrawing = (handState.currentGesture == HandGesture.UsingItem);
         if (pen.IsDrawing)
         {
             var pose = handState.GetJointPose(HandJointID.IndexTip);

@@ -89,24 +89,26 @@ namespace NRKernal
         public enum NRGestureType
         {
             NR_GESTURE_TYPE_UNKNOWN = -1,
-            NR_GESTURE_TYPE_OPEN_HAND = 0,
+            NR_GESTURE_TYPE_STOP = 0,
             NR_GESTURE_TYPE_GRAB = 1,
             NR_GESTURE_TYPE_PINCH = 2,
-            NR_GESTURE_TYPE_POINT = 3,
+            NR_GESTURE_TYPE_USINGITEM = 3,
             NR_GESTURE_TYPE_VICTORY = 4,
             NR_GESTURE_TYPE_CALL = 5,
             NR_GESTURE_TYPE_SYSTEM = 6,
+            NR_GESTURE_TYPE_GOOD = 7,
         }
 
         public enum NRGestureTypeMask : UInt64
         {
-            NR_GESTURE_TYPE_MASK_OPEN_HAND = (1L << NRGestureType.NR_GESTURE_TYPE_OPEN_HAND),
+            NR_GESTURE_TYPE_MASK_OPEN_HAND = (1L << NRGestureType.NR_GESTURE_TYPE_STOP),
             NR_GESTURE_TYPE_MASK_GRAB = (1L << NRGestureType.NR_GESTURE_TYPE_GRAB),
             NR_GESTURE_TYPE_MASK_PINCH = (1L << NRGestureType.NR_GESTURE_TYPE_PINCH),
-            NR_GESTURE_TYPE_MASK_POINT = (1L << NRGestureType.NR_GESTURE_TYPE_POINT),
+            NR_GESTURE_TYPE_MASK_POINT = (1L << NRGestureType.NR_GESTURE_TYPE_USINGITEM),
             NR_GESTURE_TYPE_MASK_VICTORY = (1L << NRGestureType.NR_GESTURE_TYPE_VICTORY),
             NR_GESTURE_TYPE_MASK_CALL = (1L << NRGestureType.NR_GESTURE_TYPE_CALL),
             NR_GESTURE_TYPE_MASK_SYSTEM = (1L << NRGestureType.NR_GESTURE_TYPE_SYSTEM),
+            NR_GESTURE_TYPE_MASK_GOOD = (1L << NRGestureType.NR_GESTURE_TYPE_GOOD),
             NR_GESTURE_TYPE_MASK_ALL = 0x7FFFFFFFFFFFFFFF
         }
 
@@ -373,20 +375,22 @@ namespace NRKernal
         {
             switch (gestureType)
             {
-                case NRGestureType.NR_GESTURE_TYPE_OPEN_HAND:
+                case NRGestureType.NR_GESTURE_TYPE_STOP:
                     return HandGesture.Stop;
                 case NRGestureType.NR_GESTURE_TYPE_GRAB:
                     return HandGesture.Grab;
                 case NRGestureType.NR_GESTURE_TYPE_PINCH:
                     return HandGesture.Pinch;
-                case NRGestureType.NR_GESTURE_TYPE_POINT:
-                    return HandGesture.Point;
+                case NRGestureType.NR_GESTURE_TYPE_USINGITEM:
+                    return HandGesture.UsingItem;
                 case NRGestureType.NR_GESTURE_TYPE_VICTORY:
                     return HandGesture.Victory;
                 case NRGestureType.NR_GESTURE_TYPE_CALL:
                     return HandGesture.Call;
                 case NRGestureType.NR_GESTURE_TYPE_SYSTEM:
                     return HandGesture.System;
+                case NRGestureType.NR_GESTURE_TYPE_GOOD:
+                    return HandGesture.Good;
                 default:
                     break;
             }
