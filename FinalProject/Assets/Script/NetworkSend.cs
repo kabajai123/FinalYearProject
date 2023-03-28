@@ -46,6 +46,10 @@ public class NetworkSend : MonoBehaviour
 
         //if (handState == null)
         //    return;
+        if (_RightHandState.isTracked == false || _LeftHandState.isTracked == false)
+        {
+            Send("0");
+        }
         if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Stop && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Stop)
         {
             //Stopping the Car
@@ -63,6 +67,7 @@ public class NetworkSend : MonoBehaviour
         }
     }
 
+    
     public void Send(string message)
     {
         string my_command = CarIpAddress + message;

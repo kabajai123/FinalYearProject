@@ -3246,7 +3246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &446492216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5378,13 +5378,14 @@ MonoBehaviour:
   RingObject: {fileID: 7144867906870780744, guid: 2b21d9db24fc2514399cc89ca8f91d4c,
     type: 3}
   _Camera: {fileID: 4227880}
+  domainHand: 1
   _RightJointPose:
   - position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
   _LeftJointPose:
   - position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
-  domainHand: 1
+  _rHnadPosition: {x: 0, y: 0, z: 0}
   handJoint: 00000000
   handEnum: 1
   isSpawned: 0

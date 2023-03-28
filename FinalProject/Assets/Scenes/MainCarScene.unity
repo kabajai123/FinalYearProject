@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d768e317e912d4ea1212333bee24a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamAddress: http://192.168.1.9:8080/video
+  streamAddress: http://192.168.0.104:8080/video
   showFps: 1
   chunkSize: 4
 --- !u!114 &293502789
@@ -602,7 +602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1255354439
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d768e317e912d4ea1212333bee24a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamAddress: http://192.168.1.9:8080/video
+  streamAddress: http://192.168.1.3:8080/video
   showFps: 1
   chunkSize: 4
 --- !u!1001 &1846749927
