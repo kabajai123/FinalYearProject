@@ -14,8 +14,9 @@ public class NetworkSend : MonoBehaviour
     public HandEnum handEnum;
     string input;
 
+    string CheckRepeat = "example";
 
-    private void Update()
+    private void FixedUpdate()
     {
         //input = Input.inputString;
 
@@ -68,11 +69,15 @@ public class NetworkSend : MonoBehaviour
     }
 
     
-    public void Send(string message)
+    public IEnumerator Send(string message)
     {
-        string my_command = CarIpAddress + message;
-        Debug.Log(my_command);
-        UnityWebRequest www = UnityWebRequest.Get(my_command);
-        www.SendWebRequest();
+        if (CheckRepeat.Equals(message)==false) {
+            string my_command = CarIpAddress + message;
+            Debug.Log(my_command);
+            UnityWebRequest www = UnityWebRequest.Get(my_command);
+            CheckRepeat = message;
+            yield return www.SendWebRequest();
+        }
+        yield return null;
     }
 }
