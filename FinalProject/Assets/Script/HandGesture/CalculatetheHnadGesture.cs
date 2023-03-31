@@ -26,7 +26,7 @@ public class CalculatetheHnadGesture : MonoBehaviour
     private float RingZ;
 
     public Vector3 _rHnadPosition;
-
+ 
     public HandJointID[] handJoint;
     public HandEnum handEnum;
 
