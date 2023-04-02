@@ -6,12 +6,13 @@ public class Player : MonoBehaviour
 {
     public float speed = .1f;
     public GameObject item;
- 
 
+    Animator itemAnimator;
     // Start is called before the first frame update
     void Start()
     {
         item.GetComponent<BoxCollider>();
+        itemAnimator = item.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -37,14 +38,12 @@ public class Player : MonoBehaviour
         if (item.gameObject.tag == "ItemBox")
         {
             //item.gameObject.GetComponent<SphereCollider>().enabled = false;
-            
-         
-            item.gameObject.GetComponent<Animator>().SetBool("Enlarge", false);
 
+            Debug.Log("get hit");
+            //item.gameObject.GetComponent<Animator>().SetBool("Enlarge", true);
             yield return new WaitForSeconds(0.5f);
-      
-
-            item.gameObject.GetComponent<Animator>().SetBool("Enlarge", true);
+            int name = Animator.StringToHash("SpawnItemBox");
+            item.gameObject.GetComponent<Animator>().SetTrigger(name);
             //item.gameObject.GetComponent<SphereCollider>().enabled = true;
 
         }
