@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public float speed = .1f;
     public GameObject item;
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +34,24 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (item.gameObject.tag == "Player")
+        if (item.gameObject.tag == "ItemBox")
         {
-            Destroy(item);
+
+            item.gameObject.GetComponent<Animator>().SetBool("Enlarge", true);
+
         }
+
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (item.gameObject.tag == "ItemBox")
+        {
+
+            item.gameObject.GetComponent<Animator>().SetBool("Enlarge", false);
+
+        }
+
+    }
+
 }
