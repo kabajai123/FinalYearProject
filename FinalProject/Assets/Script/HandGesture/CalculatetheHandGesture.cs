@@ -80,8 +80,8 @@ public class CalculatetheHandGesture : MonoBehaviour
             //movingRotation = new Vector3(centerXrotation, centerYrotation, centerZrotation);
             //obj.transform.eulerAngles = Vector3.MoveTowards(movingRotation, movingRotation, step);
             //Debug.Log("Rotation: " + _savingRing.transform.eulerAngles);
-
-            direction = _RHandPosition - _KeepTrackPosition;
+            int listKeepTrackCount = _KeepTrackPosition.Count;
+            direction = _RHandPosition - _KeepTrackPosition[listKeepTrackCount-1];
             angle = Vector3.Angle(Vector3.right, direction);
             Debug.Log("The angle range: " + angle);
             if (direction.y < 0)
