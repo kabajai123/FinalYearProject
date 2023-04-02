@@ -10,7 +10,12 @@ PrefabInstance:
     - target: {fileID: 3358568815540729228, guid: dc92a070ec2f60f4dad9758aeb15c205,
         type: 3}
       propertyPath: m_Name
-      value: ItemBubble
+      value: ItemBubble Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358568815540729228, guid: dc92a070ec2f60f4dad9758aeb15c205,
+        type: 3}
+      propertyPath: m_TagString
+      value: ItemBox
       objectReference: {fileID: 0}
     - target: {fileID: 3358568815540729456, guid: dc92a070ec2f60f4dad9758aeb15c205,
         type: 3}
