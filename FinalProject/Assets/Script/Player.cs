@@ -32,12 +32,20 @@ public class Player : MonoBehaviour
         transform.position += moveDirection * speed;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private IEnumerator OnTriggerEnter(Collider other)
     {
         if (item.gameObject.tag == "ItemBox")
         {
+            //item.gameObject.GetComponent<SphereCollider>().enabled = false;
+            
+         
+            item.gameObject.GetComponent<Animator>().SetBool("Enlarge", false);
+
+            yield return new WaitForSeconds(0.5f);
+      
 
             item.gameObject.GetComponent<Animator>().SetBool("Enlarge", true);
+            //item.gameObject.GetComponent<SphereCollider>().enabled = true;
 
         }
 
@@ -45,13 +53,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (item.gameObject.tag == "ItemBox")
-        {
-
-            item.gameObject.GetComponent<Animator>().SetBool("Enlarge", false);
-
-        }
-
+        item.gameObject.GetComponent<Animator>().SetBool("Enlarge", false);
     }
 
 }
