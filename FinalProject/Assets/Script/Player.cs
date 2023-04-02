@@ -37,14 +37,14 @@ public class Player : MonoBehaviour
     {
         if (item.gameObject.tag == "ItemBox")
         {
-            //item.gameObject.GetComponent<SphereCollider>().enabled = false;
+            item.gameObject.GetComponent<SphereCollider>().enabled = false;
+            item.gameObject.GetComponent<Animator>().SetBool("Enlarge", true);
 
-            Debug.Log("get hit");
-            //item.gameObject.GetComponent<Animator>().SetBool("Enlarge", true);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.4f);
             int name = Animator.StringToHash("SpawnItemBox");
-            item.gameObject.GetComponent<Animator>().SetTrigger(name);
-            //item.gameObject.GetComponent<SphereCollider>().enabled = true;
+
+            item.gameObject.GetComponent<Animator>().SetBool("Enlarge", false);
+            item.gameObject.GetComponent<SphereCollider>().enabled = true;
 
         }
 
