@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using NRKernal;
 
-public class CalculatetheHnadGesture : MonoBehaviour
+public class CalculatetheHandGesture : MonoBehaviour
 {
-    //private Transform object_a;
-    //private Transform object_b;
     private Vector3 movingPosition;
     //private Vector3 movingRotation;
 
@@ -25,22 +23,34 @@ public class CalculatetheHnadGesture : MonoBehaviour
     private float RingY;
     private float RingZ;
 
-    public Vector3 _rHnadPosition;
- 
+    public Vector3 _RHandPosition;
+    public Vector3 _LHandPosition;
+    public Vector3 direction;
+
     public HandJointID[] handJoint;
     public HandEnum handEnum;
 
     public bool isSpawned = false;
 
+    public List<Vector3> _KeepTrackPosition;
+
+    private Vector3 _IgnorePartofPosition = new Vector3(0, 0, 0);
+
     void Start()
     {
         domainHand = NRInput.DomainHand;
         domainHand = ControllerHandEnum.Left;
+        _KeepTrackPosition = new List<Vector3>();
     }
 
     void Update()
     {        
         driving();
+
+        if(_RHandPosition != _IgnorePartofPosition)
+        {
+            _KeepTrackPosition.Add(_RHandPosition);
+        }
 
         if (!isSpawned)
         {
@@ -65,21 +75,15 @@ public class CalculatetheHnadGesture : MonoBehaviour
 
             movingPosition = new Vector3(RingX, RingY, RingZ);
             //_savingRing.transform.position = Vector3.MoveTowards(movingPosition, movingPosition, step);
-            Debug.Log("Position: " + _savingRing.transform.position);
+            //Debug.Log("Position: " + _savingRing.transform.position);
 
             //movingRotation = new Vector3(centerXrotation, centerYrotation, centerZrotation);
             //obj.transform.eulerAngles = Vector3.MoveTowards(movingRotation, movingRotation, step);
+            //Debug.Log("Rotation: " + _savingRing.transform.eulerAngles);
 
-            //float euler_y = object_a.eulerAngles.y;
-            //object_b.eulerAngles = new Vector3(object_b.eulerAngles.x, euler_y, object_b.eulerAngles.z);
-            //Vector3 circleEdgePos = object_a.position + object_a.forward * radius;
-            //object_b.LookAt(circleEdgePos);
-            Debug.Log("Position: " + _savingRing.transform.eulerAngles);
-
-
-            Vector3 direction = _RightJointPose[0].position - transform.position;
+            direction = _RHandPosition - _KeepTrackPosition;
             angle = Vector3.Angle(Vector3.right, direction);
-            //Debug.Log("The angle range: " + angle);
+            Debug.Log("The angle range: " + angle);
             if (direction.y < 0)
             {
                 angle = 360 - angle;
@@ -98,7 +102,7 @@ public class CalculatetheHnadGesture : MonoBehaviour
         //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
         {
             isSpawned = true;
-            _savingRing = Instantiate(RingObject, _rHnadPosition, Quaternion.identity);
+            _savingRing = Instantiate(RingObject, _RHandPosition, Quaternion.identity);
             Debug.Log("Spawning a sphere");
         }
     }
@@ -125,23 +129,16 @@ public class CalculatetheHnadGesture : MonoBehaviour
         //RingY = _RightJointPose[0].position.y + 0.05f;
         //RingZ = _RightJointPose[0].position.z;
 
-        _rHnadPosition = (_RightJointPose[0].position + _LeftJointPose[0].position) / 2;
-        //transform.position = _Camera.transform.position;
-        Debug.Log("Center: " + _rHnadPosition);
+        _RHandPosition = _RightJointPose[0].position;
+        Debug.Log("R:Center: " + _RHandPosition);
 
-        //radius = _RightJointPose[0].position - movingPosition;
-        //Debug.Log("RadiusPosition: " + radius);
+        //_LHandPosition = _LeftJointPose[0].position;
+        //Debug.Log("L:Center: " + _LHandPosition);
 
-        //Vector3 direction = transform.position - _RightJointPose[0].position;
-        //float angle = Vector3.Angle(Vector3.right, direction);
-        //Debug.Log("The angle range: " + angle);
-        //if (direction.y < 0)
+        //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
         //{
-        //    angle = 360 - angle;
-        //}
-        //if (angle > maxAngle)
-        //{
-        //    Destroy(_savingRing);
+        //    radius = (_RHandPosition + _LHandPosition) / 2;
+        //    Debug.Log("RadiusPosition: " + radius);
         //}
     }
 }
