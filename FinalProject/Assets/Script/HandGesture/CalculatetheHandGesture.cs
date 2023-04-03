@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using NRKernal;
 
 public class CalculatetheHandGesture : MonoBehaviour
@@ -26,11 +27,15 @@ public class CalculatetheHandGesture : MonoBehaviour
     public Vector3 _RHandPosition;
     public Vector3 _LHandPosition;
     public Vector3 direction;
+    public Vector3 abc;
 
     public HandJointID[] handJoint;
     public HandEnum handEnum;
 
     public bool isSpawned = false;
+    public bool abcd;
+
+    public TMP_Text AngleText;
 
     public List<Vector3> _KeepTrackPosition;
 
@@ -81,8 +86,9 @@ public class CalculatetheHandGesture : MonoBehaviour
             //obj.transform.eulerAngles = Vector3.MoveTowards(movingRotation, movingRotation, step);
             //Debug.Log("Rotation: " + _savingRing.transform.eulerAngles);
             int listKeepTrackCount = _KeepTrackPosition.Count;
-            direction = _RHandPosition - _KeepTrackPosition[listKeepTrackCount-1];
-            angle = Vector3.Angle(Vector3.right, direction);
+            direction = _KeepTrackPosition[listKeepTrackCount-1];
+            angle = Vector3.Angle(abc, direction);
+            AngleText.text = "Angle: " + angle.ToString();
             Debug.Log("The angle range: " + angle);
             if (direction.y < 0)
             {
@@ -109,7 +115,7 @@ public class CalculatetheHandGesture : MonoBehaviour
 
     public float center; 
     public float maxAngle;
-    public float angle = 0;
+    public float angle;
 
     public void driving()
     {
@@ -129,8 +135,18 @@ public class CalculatetheHandGesture : MonoBehaviour
         //RingY = _RightJointPose[0].position.y + 0.05f;
         //RingZ = _RightJointPose[0].position.z;
 
-        _RHandPosition = _RightJointPose[0].position;
-        Debug.Log("R:Center: " + _RHandPosition);
+        if(_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
+        {
+            _RHandPosition = _RightJointPose[0].position;
+            Debug.Log("R:Center: " + _RHandPosition);
+
+            if (!abcd)
+            {
+                getHandPositionFirst();
+
+            }
+        }
+
 
         //_LHandPosition = _LeftJointPose[0].position;
         //Debug.Log("L:Center: " + _LHandPosition);
@@ -140,5 +156,15 @@ public class CalculatetheHandGesture : MonoBehaviour
         //    radius = (_RHandPosition + _LHandPosition) / 2;
         //    Debug.Log("RadiusPosition: " + radius);
         //}
+    }
+
+    public void getHandPositionFirst()
+    {
+        abcd = true;
+        if(_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
+        {
+            abc = _RightJointPose[0].position;
+            Debug.Log("RightHandFirstPosition: " + abc);
+        }
     }
 }
