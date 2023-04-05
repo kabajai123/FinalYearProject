@@ -34,6 +34,7 @@ public class CalculatetheHandGesture : MonoBehaviour
     public List<Vector3> _KeepTrackRPosition;
     public List<Vector3> _KeepTrackLPosition;
 
+    public NetworkSend _Command;
 
     void Start()
     {
@@ -44,67 +45,80 @@ public class CalculatetheHandGesture : MonoBehaviour
     void Update()
     {        
         driving();
-
-        if(_RHandPosition != _IgnorePartofPosition)
-        {
-            _KeepTrackRPosition.Add(_RHandPosition);
-        }
-
-        if(_LHandPosition != _IgnorePartofPosition)
-        {
-            _KeepTrackLPosition.Add(_LHandPosition);
-        }
+        addingPositionList();
 
         if (!isSpawned)
         {
             //Make sure just Spawn 1 cube
             spawnObj();
         }
-        else if (_RightHandState.isTracked == false && _RightHandState.currentGesture == HandGesture.None)
-        //else if (_RightHandState.isTracked == false && _RightHandState.currentGesture == HandGesture.None && _LeftHandState.isTracked == false && _LeftHandState.currentGesture == HandGesture.None)
+        //else if (_RightHandState.isTracked == false && _RightHandState.currentGesture == HandGesture.None)
+        else if (_RightHandState.isTracked == false && _RightHandState.currentGesture == HandGesture.None && _LeftHandState.isTracked == false && _LeftHandState.currentGesture == HandGesture.None)
         {
             //Cannot Detect the hand the CenterPoint will disappear
             _savingRing.SetActive(false);
             lostHandPosition();
             Debug.Log("Active the sphere = false");
         }
-        else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
-        //else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
+        //else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
+        else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
         {
             //Detecting the hand the CenterPoint will show
             _savingRing.SetActive(true);
             Debug.Log("Active the sphere = true");
 
+            //Getting the Vector from the list
             listKeepTrackRCount = _KeepTrackRPosition.Count;
             listKeepTrackLCount = _KeepTrackLPosition.Count;
 
-            _UpdateCenterPoint = (_KeepTrackLPosition[listKeepTrackLCount - 1] + _KeepTrackRPosition[listKeepTrackLCount - 1]) / 2;
+            //Updating the CenterPoint
+            _UpdateCenterPoint = ((_KeepTrackLPosition[listKeepTrackLCount - 1] + _KeepTrackRPosition[listKeepTrackLCount - 1]) / 2);
 
-            _LDirection = _UpdateCenterPoint - _KeepTrackLPosition[listKeepTrackLCount - 1];
-            _RDirection = _UpdateCenterPoint - _KeepTrackRPosition[listKeepTrackRCount - 1];
+            //Calculate the MovingPoint
+            _LDirection = (_KeepTrackLPosition[listKeepTrackLCount - 1] - _UpdateCenterPoint);
+            _RDirection = (_UpdateCenterPoint - _KeepTrackRPosition[listKeepTrackRCount - 1]);
 
+            //Calculate the angle between the Starting Point and the Updated Point
             _Rangle = Vector3.Angle(_RStartingPoint, _RDirection);
             _Langle = Vector3.Angle(_LStartingPoint, _LDirection);
 
+            //Updating the Angle Text
             _LAngleText.text = "LeftAngle: " + _Langle.ToString();
             _RAngleText.text = "RightAngle: " + _Rangle.ToString();
+            
             Debug.Log("The angle range: " + _Rangle);
-            //if (direction.y < 0)
-            //{
-            //    angle = 360 - angle;
-            //}
-            //if (angle > maxAngle)
-            //{
-            //    //Destroy(_savingRing);
-            //}
+
+            //Checking the Angle of -+
+            if (_KeepTrackRPosition[listKeepTrackLCount - 1].y < 0)
+            {
+                _Rangle -= 360;
+            }
+            if (_KeepTrackRPosition[listKeepTrackLCount - 1].y < 0)
+            {
+                _Langle -= 360 ;
+            }
+
+            //Limite the Angle of the Point
+            //Turning Left
+            if (_Rangle > 20 && _Rangle < 89 && _Langle > -20 && _Langle < -89)
+            {
+                _Command.Send("2");
+            }
+
+            //Turning Right
+            if (_Langle > 20 && _Langle < 89 && _Rangle > -20 && _Rangle < -89)
+            {
+                _Command.Send("3");
+            }
+
         }
     }
 
     public void spawnObj()
     {
         //Tracking the conditions & Spawn 1 cube
-        if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
-        //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
+        //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
+        if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
         {
             isSpawned = true;
             _savingRing = Instantiate(RingObject, centerPoint, Quaternion.identity);
@@ -164,7 +178,7 @@ public class CalculatetheHandGesture : MonoBehaviour
             _RStartingPoint = centerPoint - _RightJointPose[0].position;
             Debug.Log("RightHandFirstPosition: " + _RStartingPoint);
 
-            _LStartingPoint = centerPoint - _LeftJointPose[0].position;
+            _LStartingPoint = _LeftJointPose[0].position - centerPoint;
             Debug.Log("LeftHandFirstPosition: " + _LStartingPoint);
         }
     }
@@ -172,7 +186,24 @@ public class CalculatetheHandGesture : MonoBehaviour
     public void lostHandPosition()
     {
         isGettingPosition = false;
+
         _Rangle = 0;
+        _RAngleText.text = "RightAngle: " + _Rangle.ToString();
+
         _Langle = 0;
+        _LAngleText.text = "LeftAngle: " + _Langle.ToString();
+    }
+
+    public void addingPositionList()
+    {
+        if (_RHandPosition != _IgnorePartofPosition)
+        {
+            _KeepTrackRPosition.Add(_RHandPosition);
+        }
+
+        if (_LHandPosition != _IgnorePartofPosition)
+        {
+            _KeepTrackLPosition.Add(_LHandPosition);
+        }
     }
 }
