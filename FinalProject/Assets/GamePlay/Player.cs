@@ -7,29 +7,25 @@ public class Player : MonoBehaviour
 {
     private Rigidbody rb;
     public float speed = .1f;
-    //public GameObject item;
 
     private bool hasItem = false;
     public GameObject[] itemGameObjects;
     public Sprite[] itemSprites;
     public Image yourSprite;
 
-    public Animator ItemUIAnim;
     public Animator ItemUIScroll;
 
     int index;
 
-    Animator itemAnimator;
-    // Start is called before the first frame update
+    //Animator itemAnimator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         Move();
 
         if (hasItem)
@@ -58,7 +54,6 @@ public class Player : MonoBehaviour
             other.gameObject.GetComponent<Animator>().SetBool("Enlarge", true);
 
             StartCoroutine(getItem());
-            ItemUIAnim.SetBool("ItemIn", true);
             ItemUIScroll.SetBool("Scroll", true);
 
             yield return new WaitForSeconds(1);
@@ -86,10 +81,9 @@ public class Player : MonoBehaviour
 
     public void useItem()
     {
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             hasItem = false;
-            ItemUIAnim.SetBool("ItemIn", false);
             ItemUIScroll.SetBool("Scroll", false);
             itemGameObjects[index].SetActive(false);
         }
