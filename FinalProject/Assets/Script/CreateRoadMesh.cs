@@ -12,7 +12,7 @@ public class CreateRoadMesh : MonoBehaviour
     public string AssetPath;
 
     
-    public GameObject Main;
+    public GameObject Camea;
     public GameObject PrefabRoad;
     List<Vector3> getVector = new List<Vector3>();
     List<int> triangles = new List<int>();
@@ -25,16 +25,16 @@ public class CreateRoadMesh : MonoBehaviour
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh; // CreateMesh();
 
-        getVector.Add(Main.transform.position);// 0,0,0
-        //GameObject Road =Instantiate(PrefabRoad, Main.transform.position, Quaternion.identity);
+        getVector.Add(Camea.transform.position);// 0,0,0
+        //GameObject Road =Instantiate(PrefabRoad, Camea.transform.position, Quaternion.identity);
         
     }
     void Update()
     {
-        if (Vector3.Distance(getVector[getVector.Count - 1], Main.transform.position)>0.5f) {
-            GameObject myPreFab = Instantiate(PrefabRoad,Main.transform.position, Quaternion.identity) as GameObject;
+        if (Vector3.Distance(getVector[getVector.Count - 1], Camea.transform.position)>0.5f) {
+            GameObject myPreFab = Instantiate(PrefabRoad,Camea.transform.position, Quaternion.identity) as GameObject;
             myPreFab.transform.parent = transform;
-            getVector.Add(Main.transform.position);//add new key point each 
+            getVector.Add(Camea.transform.position);//add new key point each 
             KeyPointCount++;
         }
     }

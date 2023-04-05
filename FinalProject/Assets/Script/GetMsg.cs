@@ -28,9 +28,11 @@ public class GetMsg : MonoBehaviour
         string[] ry = Cut[Cut.Length - 3].Split(" ");
         string[] rz = Cut[Cut.Length - 2].Split(" ");
         string[] rw = Cut[Cut.Length - 1].Split(" ");
-
-        CarCamera.GetComponent<Camera>().transform.position = new Vector3(float.Parse(x[x.Length - 1]) * 10, float.Parse(y[y.Length - 1]) * 10, float.Parse(z[z.Length - 1]) * 10);
-        CarCamera.GetComponent<Camera>().transform.rotation = new Quaternion(float.Parse(rx[rx.Length - 1]), float.Parse(ry[ry.Length - 1]), float.Parse(rz[rz.Length - 1]), float.Parse(rw[rw.Length - 1]));
+        if (new Vector3(float.Parse(x[x.Length - 1]), float.Parse(y[y.Length - 1]), float.Parse(z[z.Length - 1])) != new Vector3(0, 0, 0))
+        {
+            CarCamera.GetComponent<Camera>().transform.position = new Vector3(float.Parse(x[x.Length - 1]) * 10, float.Parse(y[y.Length - 1]) * 10, float.Parse(z[z.Length - 1]) * 10);
+            CarCamera.GetComponent<Camera>().transform.rotation = new Quaternion(float.Parse(rx[rx.Length - 1]), float.Parse(ry[ry.Length - 1]), float.Parse(rz[rz.Length - 1]), float.Parse(rw[rw.Length - 1]));
+        }
         Debug.Log("x: " + float.Parse(x[x.Length - 1]) * 10);
         Debug.Log("y: " + float.Parse(y[y.Length - 1]) * 10);
         Debug.Log("z: " + float.Parse(z[z.Length - 1]) * 10);
