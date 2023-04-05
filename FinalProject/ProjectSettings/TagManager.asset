@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ItemBox
   - PlayerControl
+  - Road
   layers:
   - Default
   - TransparentFX
