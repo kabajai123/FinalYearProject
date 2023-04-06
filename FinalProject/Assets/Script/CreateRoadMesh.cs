@@ -11,8 +11,9 @@ public class CreateRoadMesh : MonoBehaviour
     Vector3[] AllKey;
     public string AssetPath;
 
-    
-    public GameObject Camea;
+    public Quaternion Direc;
+
+    public GameObject Camea; // camera
     public GameObject PrefabRoad;
     List<Vector3> getVector = new List<Vector3>();
     List<int> triangles = new List<int>();
@@ -27,16 +28,22 @@ public class CreateRoadMesh : MonoBehaviour
 
         getVector.Add(Camea.transform.position);// 0,0,0
         //GameObject Road =Instantiate(PrefabRoad, Camea.transform.position, Quaternion.identity);
-        
+        Direc = Camea.transform.rotation;
+
+
+
     }
     void Update()
     {
-        if (Vector3.Distance(getVector[getVector.Count - 1], Camea.transform.position)>0.5f) {
-            GameObject myPreFab = Instantiate(PrefabRoad,Camea.transform.position, Quaternion.identity) as GameObject;
-            myPreFab.transform.parent = transform;
-            getVector.Add(Camea.transform.position);//add new key point each 
+        
+        if (Direc != Camea.transform.rotation && getVector[getVector.Count-1] != Camea.transform.position) {
+            Direc = Camea.transform.rotation;
+            getVector.Add(Camea.transform.position);
             KeyPointCount++;
         }
+
+
+
     }
    
     
