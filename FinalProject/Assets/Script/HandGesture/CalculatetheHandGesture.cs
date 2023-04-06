@@ -25,16 +25,17 @@ public class CalculatetheHandGesture : MonoBehaviour
 
     public int listKeepTrackRCount;
     public int listKeepTrackLCount;
+    public List<Vector3> _KeepTrackRPosition;
+    public List<Vector3> _KeepTrackLPosition;
 
     public TMP_Text _RAngleText;
+    public TMP_Text _RAngleYText;
+    public TMP_Text _LAngleYText;
     public TMP_Text _LAngleText;
 
     public bool isSpawned = false;
 
-    public List<Vector3> _KeepTrackRPosition;
-    public List<Vector3> _KeepTrackLPosition;
-
-    public NetworkSend _Command;
+    private NetworkSend _Command;
 
     void Start()
     {
@@ -43,8 +44,8 @@ public class CalculatetheHandGesture : MonoBehaviour
     }
 
     void Update()
-    {        
-        driving();
+    {
+        findHand();
         addingPositionList();
 
         if (!isSpawned)
@@ -65,52 +66,8 @@ public class CalculatetheHandGesture : MonoBehaviour
         {
             //Detecting the hand the CenterPoint will show
             _savingRing.SetActive(true);
+            driving();
             Debug.Log("Active the sphere = true");
-
-            //Getting the Vector from the list
-            listKeepTrackRCount = _KeepTrackRPosition.Count;
-            listKeepTrackLCount = _KeepTrackLPosition.Count;
-
-            //Updating the CenterPoint
-            _UpdateCenterPoint = ((_KeepTrackLPosition[listKeepTrackLCount - 1] + _KeepTrackRPosition[listKeepTrackLCount - 1]) / 2);
-
-            //Calculate the MovingPoint
-            _LDirection = (_KeepTrackLPosition[listKeepTrackLCount - 1] - _UpdateCenterPoint);
-            _RDirection = (_UpdateCenterPoint - _KeepTrackRPosition[listKeepTrackRCount - 1]);
-
-            //Calculate the angle between the Starting Point and the Updated Point
-            _Rangle = Vector3.Angle(_RStartingPoint, _RDirection);
-            _Langle = Vector3.Angle(_LStartingPoint, _LDirection);
-
-            //Updating the Angle Text
-            _LAngleText.text = "LeftAngle: " + _Langle.ToString();
-            _RAngleText.text = "RightAngle: " + _Rangle.ToString();
-            
-            Debug.Log("The angle range: " + _Rangle);
-
-            //Checking the Angle of -+
-            if (_KeepTrackRPosition[listKeepTrackLCount - 1].y < 0)
-            {
-                _Rangle -= 360;
-            }
-            if (_KeepTrackRPosition[listKeepTrackLCount - 1].y < 0)
-            {
-                _Langle -= 360 ;
-            }
-
-            //Limite the Angle of the Point
-            //Turning Left
-            if (_Rangle > 20 && _Rangle < 89 && _Langle > -20 && _Langle < -89)
-            {
-                _Command.Send("2");
-            }
-
-            //Turning Right
-            if (_Langle > 20 && _Langle < 89 && _Rangle > -20 && _Rangle < -89)
-            {
-                _Command.Send("3");
-            }
-
         }
     }
 
@@ -137,7 +94,7 @@ public class CalculatetheHandGesture : MonoBehaviour
 
     public bool isGettingPosition;
 
-    public void driving()
+    public void findHand()
     {
         //Get Left & Right Hand
         _RightHandState = NRInput.Hands.GetHandState(HandEnum.RightHand);
@@ -169,6 +126,49 @@ public class CalculatetheHandGesture : MonoBehaviour
         }
     }
 
+    public void driving()
+    {
+        //Detecting the hand the CenterPoint will show
+        _savingRing.SetActive(true);
+        Debug.Log("Active the sphere = true");
+
+        //Getting the Vector from the list
+        listKeepTrackRCount = _KeepTrackRPosition.Count;
+        listKeepTrackLCount = _KeepTrackLPosition.Count;
+
+        //Updating the CenterPoint
+        _UpdateCenterPoint = ((_KeepTrackLPosition[listKeepTrackLCount - 1] + _KeepTrackRPosition[listKeepTrackRCount - 1]) / 2);
+
+        //Calculate the MovingPoint
+        _LDirection = (_KeepTrackLPosition[listKeepTrackLCount - 1] - _UpdateCenterPoint);
+        _RDirection = (_UpdateCenterPoint - _KeepTrackRPosition[listKeepTrackRCount - 1]);
+
+        //Calculate the angle between the Starting Point and the Updated Point
+        _Rangle = Vector3.Angle(_RStartingPoint, _RDirection);
+        _Langle = Vector3.Angle(_LStartingPoint, _LDirection);
+
+        //Updating the Angle Text
+        _LAngleText.text = "LeftAngle: " + _Langle.ToString();
+        _RAngleText.text = "RightAngle: " + _Rangle.ToString();
+
+        Debug.Log("The angle range: " + _Rangle);
+
+        _RAngleYText.text = "Righ Hand Position Y: " + _KeepTrackRPosition[listKeepTrackRCount - 1].y.ToString();
+        _LAngleYText.text = "Left Hand Position Y: " + _KeepTrackLPosition[listKeepTrackLCount - 1].y.ToString();
+
+        //Limite the Angle of the Point && Checking the Angle of -+
+        //Turning Left
+        if (_Rangle > 20 && _Rangle < 89 && _KeepTrackRPosition[listKeepTrackRCount - 1].y > 0f)
+        {
+            _Command.Send("2");
+        }
+
+        //Turning Right
+        if (_Langle > 20 && _Langle < 89 && _KeepTrackLPosition[listKeepTrackLCount - 1].y < 0f)
+        {
+            _Command.Send("3");
+        }
+    }
     public void getHandPositionFirst()
     {
         isGettingPosition = true;
@@ -192,6 +192,12 @@ public class CalculatetheHandGesture : MonoBehaviour
 
         _Langle = 0;
         _LAngleText.text = "LeftAngle: " + _Langle.ToString();
+
+        _RDirection.y = 0f;
+        _RAngleYText.text = "Right Hand Position Y: " + _KeepTrackRPosition[listKeepTrackRCount - 1].y.ToString();
+
+        _LDirection.y = 0f;
+        _LAngleYText.text = "Left Hand Position Y: " + _KeepTrackLPosition[listKeepTrackLCount - 1].y.ToString();
     }
 
     public void addingPositionList()
