@@ -36,7 +36,7 @@ public class AIcar : MonoBehaviour
             Loop = true;
             StartPoint = createRoadMesh.KeyPoint[0];
             PointCount = createRoadMesh.KeyPoint.Count;
-            dis = Vector3.Distance(transform.position, createRoadMesh.KeyPoint[m_count]);
+            dis = Vector3.Distance(transform.position, new Vector3(createRoadMesh.KeyPoint[m_count].x, 0, createRoadMesh.KeyPoint[m_count].z));
             if (dis < 1)
             {
                 timecount = 0;
