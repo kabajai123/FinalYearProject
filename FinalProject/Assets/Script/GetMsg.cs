@@ -33,6 +33,8 @@ public class GetMsg : MonoBehaviour
             CarCamera.GetComponent<Camera>().transform.position = new Vector3(float.Parse(x[x.Length - 1]) * 10, float.Parse(y[y.Length - 1]) * 10, float.Parse(z[z.Length - 1]) * 10);
             CarCamera.GetComponent<Camera>().transform.rotation = new Quaternion(float.Parse(rx[rx.Length - 1]), float.Parse(ry[ry.Length - 1]), float.Parse(rz[rz.Length - 1]), float.Parse(rw[rw.Length - 1]));
         }
+        // This function is for moving the camera in real time
+
         Debug.Log("x: " + float.Parse(x[x.Length - 1]) * 10);
         Debug.Log("y: " + float.Parse(y[y.Length - 1]) * 10);
         Debug.Log("z: " + float.Parse(z[z.Length - 1]) * 10);

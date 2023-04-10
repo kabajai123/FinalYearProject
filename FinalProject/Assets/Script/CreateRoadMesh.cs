@@ -11,11 +11,12 @@ public class CreateRoadMesh : MonoBehaviour
     Vector3[] AllKey;
     public string AssetPath;
 
-    public Quaternion Direc;
-
+    public Quaternion Rotate;
+    public Vector3 NowPos;
     public GameObject Camea; // camera
     public GameObject PrefabRoad;
-    List<Vector3> getVector = new List<Vector3>();
+    public List<Vector3> KeyPoint = new List<Vector3>();
+    public List<Vector3> getVector = new List<Vector3>();
     List<int> triangles = new List<int>();
 
     public int KeyPointCount=0;
@@ -25,21 +26,31 @@ public class CreateRoadMesh : MonoBehaviour
    
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh; // CreateMesh();
-
-        getVector.Add(Camea.transform.position);// 0,0,0
+        Vector3 Pos = Camea.transform.position;
+        KeyPoint.Add(Camea.transform.position);
+        getVector.Add(new Vector3(Pos.x + 1, 0, Pos.z));// 1,0,0
+        getVector.Add(new Vector3(Pos.x - 1, 0, Pos.z));//-1,0,0
+        getVector.Add(new Vector3(Pos.x + 1, -0.01f, Pos.z));// 1,-0.01,0
+        getVector.Add(new Vector3(Pos.x - 1, -0.01f, Pos.z));//-1,-0.01,0
         //GameObject Road =Instantiate(PrefabRoad, Camea.transform.position, Quaternion.identity);
-        Direc = Camea.transform.rotation;
+        Rotate = Camea.transform.rotation;
 
-
+        Debug.Log("angle "+Vector3.Angle(new Vector3(1,0,0), new Vector3(-1,0,0)));
 
     }
     void Update()
     {
-        
-        if (Direc != Camea.transform.rotation && getVector[getVector.Count-1] != Camea.transform.position) {
-            Direc = Camea.transform.rotation;
-            getVector.Add(Camea.transform.position);
+        NowPos = Camea.transform.position;
+        if ((Rotate != Camea.transform.rotation) && (getVector[getVector.Count-1] != new Vector3(Camea.transform.position.x-1, Camea.transform.position.y - 0.01f, Camea.transform.position.z))) {
+            Rotate = Camea.transform.rotation;
+            Vector3 Pos = Camea.transform.position;
+            KeyPoint.Add(Camea.transform.position);
+            getVector.Add(new Vector3(Pos.x + 1, 0, Pos.z));
+            getVector.Add(new Vector3(Pos.x - 1, 0, Pos.z));
+            getVector.Add(new Vector3(Pos.x + 1, -0.01f, Pos.z));
+            getVector.Add(new Vector3(Pos.x - 1, -0.01f, Pos.z));
             KeyPointCount++;
+            CreateMesh();
         }
 
 
@@ -51,19 +62,26 @@ public class CreateRoadMesh : MonoBehaviour
     {
         mesh.Clear();
         List<int> triangles = new List<int>();
-        for (int count = 0; count < ReadFile().Count - 2; count++)
+        for (int count = 0; count < getVector.Count - 4; count++)
         {
-            triangles.Add(count);
-            triangles.Add(count + 1);
-            triangles.Add(count + 2);
-            count++;
-            triangles.Add(count + 1);
-            triangles.Add(count);
-            triangles.Add(count + 2);
-
+                triangles.Add(count);
+                triangles.Add(count + 1);
+                triangles.Add(count + 4);
+                count++;
+                triangles.Add(count + 3);
+                triangles.Add(count);
+                triangles.Add(count + 4);
+                count++;
+                triangles.Add(count + 1);
+                triangles.Add(count);
+                triangles.Add(count + 5);
+                count++;
+                triangles.Add(count + 4);
+                triangles.Add(count - 1);
+                triangles.Add(count + 3);
         }
 
-        mesh.vertices = ReadFile().ToArray();
+        mesh.vertices = getVector.ToArray();
         mesh.triangles = triangles.ToArray();
 
     }
