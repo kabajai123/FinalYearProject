@@ -10,56 +10,47 @@ public class AIcar : MonoBehaviour
     /// <summary>
     /// This script is for ai moving and control
     /// </summary>
-    Rigidbody m_Rigidbody;
 
     Vector3 StartPoint , EndPoint;
     float PointCount;
     void Start()
     {
         createRoadMesh = getRoadList.GetComponent<CreateRoadMesh>();
-        m_Rigidbody = GetComponent<Rigidbody>();
 
-        
     }
     
-    bool Loop = true;
+    bool Loop = false;
+    int m_count = 0;
+    float dis = 0;
+    Vector3 startpos = new Vector3();
+    Vector3 diffpos = new Vector3();
+    float timecount;
     void Update()
     {
-        
-        EndPoint = createRoadMesh.KeyPoint[createRoadMesh.KeyPoint.Count-1];
 
-        if (Input.GetKeyDown("space")) {
-            Debug.Log("fk");
-            Debug.Log("count"+PointCount);
+        EndPoint = createRoadMesh.KeyPoint[createRoadMesh.KeyPoint.Count - 1];
+        
+        if (Input.GetKeyDown("space")||Loop) {
+
+         
+            Loop = true;
             StartPoint = createRoadMesh.KeyPoint[0];
             PointCount = createRoadMesh.KeyPoint.Count;
-            m_Rigidbody.MovePosition(transform.position + createRoadMesh.KeyPoint[1] * Time.deltaTime);
-
-            
-            for (int m_count =1 ; m_count < PointCount; m_count++) {
-                Loop = true;
-                Debug.Log("help");
-                float dis = Vector3.Distance(transform.position, createRoadMesh.KeyPoint[m_count]);
+            dis = Vector3.Distance(transform.position, createRoadMesh.KeyPoint[m_count]);
+            if (dis < 1)
+            {
+                timecount = 0;
                 
-                do
-                {
-                    dis = Vector3.Distance(transform.position, createRoadMesh.KeyPoint[m_count]);
-                    if (dis < 0.05f)
-                    {
-
-                        m_Rigidbody.velocity = new Vector3(0, 0, 0);
-                        Loop = false;
-                    }
-                    else
-                    {
-                        m_Rigidbody.MovePosition(transform.position + createRoadMesh.KeyPoint[m_count] * Time.deltaTime);
-                        Debug.Log("moving");
-                    }
-                } while (Loop);
-                
+                m_count++;
+                startpos = transform.position;
+                diffpos = new Vector3(createRoadMesh.KeyPoint[m_count].x,0,createRoadMesh.KeyPoint[m_count].z) - startpos;
 
             }
+            timecount += Time.deltaTime;
+            transform.position = startpos + diffpos * timecount/2;
             
+
+
         }
     }
 }
