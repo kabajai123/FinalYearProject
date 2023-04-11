@@ -69,15 +69,15 @@ public class NetworkSend : MonoBehaviour
     }
 
     
-    public IEnumerator Send(string message)
+    public void Send(string message)
     {
         if (CheckRepeat.Equals(message)==false) {
             string my_command = CarIpAddress + message;
             Debug.Log(my_command);
             UnityWebRequest www = UnityWebRequest.Get(my_command);
             CheckRepeat = message;
-            yield return www.SendWebRequest();
+            www.SendWebRequest();
+        //yield return www.SendWebRequest();
         }
-        yield return null;
     }
 }

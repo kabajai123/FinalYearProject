@@ -35,7 +35,7 @@ public class CalculatetheHandGesture : MonoBehaviour
 
     public bool isSpawned = false;
 
-    private NetworkSend _Command;
+    public NetworkSend _Command;
 
     void Start()
     {
@@ -160,13 +160,13 @@ public class CalculatetheHandGesture : MonoBehaviour
         //Turning Left
         if (_Rangle > 20 && _Rangle < 89 && _KeepTrackRPosition[listKeepTrackRCount - 1].y > 0f)
         {
-            _Command.Send("2");
+            _Command.Send("5");
         }
 
         //Turning Right
         if (_Langle > 20 && _Langle < 89 && _KeepTrackLPosition[listKeepTrackLCount - 1].y < 0f)
         {
-            _Command.Send("3");
+            _Command.Send("4");
         }
     }
     public void getHandPositionFirst()
