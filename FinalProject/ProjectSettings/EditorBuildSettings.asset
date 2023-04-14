@@ -6,24 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/MainMenuScene_testing.unity
-    guid: 911ab0f8c37c7084494f48efdec18fa1
-  - enabled: 1
     path: Assets/Scenes/MainMenuScene_demo.unity
     guid: 188fed80b510ab94fbd1c90e559eb2b9
-  - enabled: 1
-    path: Assets/Scenes/MainCarScene.unity
-    guid: 299e99103bb55aa49bfca1bba96a3e10
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/CreateRacingWay.unity
+    guid: 7f62179c59d9be44b8d090e056fc000c
+  - enabled: 0
     path: Assets/Scenes/TutorialScene.unity
     guid: 7b2b481235d496a4991799dcd6e73f0d
   - enabled: 0
+    path: Assets/Scenes/MainCarScene.unity
+    guid: 299e99103bb55aa49bfca1bba96a3e10
+  - enabled: 1
     path: Assets/NRSDK/Demos/HandTracking.unity
     guid: 7d33c4a3bc8da9745acac0e1d62c44bf
-  - enabled: 0
-    path: Assets/NRSDK/Demos/RGBCamera-Record.unity
-    guid: 372f49325786d554ea3a2306e1178303
-  - enabled: 0
-    path: Assets/NRSDK/Demos/RGBCamera-Capture.unity
-    guid: e0b534db44fbb1a48b5410630bbcd749
   m_configObjects: {}

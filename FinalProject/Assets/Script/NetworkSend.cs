@@ -56,11 +56,6 @@ public class NetworkSend : MonoBehaviour
             //Stopping the Car
             Send("0");
         }
-        else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Victory)
-        {
-            //Moving Forward the Car
-            Send("1");
-        }
         else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Stop)
         {
             //Back Forward of the Car

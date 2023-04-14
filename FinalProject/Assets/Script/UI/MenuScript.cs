@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
-    public GameObject MainMenu, ConfirmStartMenu, ConfirmNewRacewayMenu;
-   
+    public GameObject MainMenu;
+    public GameObject GameStartMenu;
+    public GameObject ConfirmNewRacewayMenu;
 
-    public void StartButton() {
-        MainMenu.SetActive(false);
-        ConfirmStartMenu.SetActive(true);
-        //SceneManager.LoadScene("MainCarScene");
+
+    public void StartButton()
+    {
+        SceneManager.LoadScene("CreateRacingWay");
     }
 
     public void ConfirmStartButton()
@@ -21,7 +22,8 @@ public class MenuScript : MonoBehaviour
 
     public void CreateNewRacewayButton()
     {
-        
+        GameStartMenu.SetActive(false);
+        ConfirmNewRacewayMenu.SetActive(true);
     }
 
     public void ConfirmNewRacewayButton()

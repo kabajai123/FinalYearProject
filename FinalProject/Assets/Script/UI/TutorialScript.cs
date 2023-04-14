@@ -28,19 +28,19 @@ public class TutorialScript : MonoBehaviour
         switch (WordsNum)
         {
             case 0:
-                UpdateMessage.text = "Use your hands to turn left and right.";
+                UpdateMessage.text = "'Grab' Gestures to turn left and right similar to drive.";
                 break;
             case 1:
-                UpdateMessage.text = "Use this moving to move the car.";
+                UpdateMessage.text = "Holding Left Hand and Right Hand 'Grab' Gestures Horizontally to move the car.";
                 break;
             case 2:
-                UpdateMessage.text = "Use this moving to stop the car.";
+                UpdateMessage.text = "Holding Left Hand 'Open' Gesture and Right Hand 'Grab' Gesture to stop the car.";
                 break;
             case 3:
-                UpdateMessage.text = "Use this moving to call menu.";
+                UpdateMessage.text = "Pointing somewhere can use the Virtual Items.";
                 break;
             case 4:
-                UpdateMessage.text = "Let try in the game!!! ";
+                UpdateMessage.text = "Let's have fun!!! ";
                 break;
             case 5:
                 UnityEngine.SceneManagement.SceneManager.LoadScene("MainCarScene");
