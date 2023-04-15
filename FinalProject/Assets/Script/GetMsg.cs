@@ -35,9 +35,7 @@ public class GetMsg : MonoBehaviour
         }
         // This function is for moving the camera in real time
 
-        Debug.Log("x: " + float.Parse(x[x.Length - 1]) * 10);
-        Debug.Log("y: " + float.Parse(y[y.Length - 1]) * 10);
-        Debug.Log("z: " + float.Parse(z[z.Length - 1]) * 10);
+       
 
     }
 
