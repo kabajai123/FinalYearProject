@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private bool hasItem = false;
     public GameObject[] itemGameObjects;
     public Sprite[] itemSprites;
-    public Image yourSprite;
+    public GameObject yourSprite;
 
     public Animator ItemUIScroll;
     int index;
@@ -23,37 +23,47 @@ public class Player : MonoBehaviour
         }
        
     }
+    bool gethit;
     private void OnTriggerEnter(Collider other) // get hit with item
     {
-        Debug.Log("yo");
+        
         if (other.gameObject.tag == "ItemBox")
         {
-            Debug.Log("enter");
             other.gameObject.GetComponent<Animator>().SetBool("Enlarge", true);
-            //StartCoroutine(getItem());
-            ItemUIScroll.SetBool("Scroll", true);
-            StartCoroutine(RespawnCheck(other.gameObject));
             
+            StartCoroutine(RespawnCheck(other.gameObject));
+            gethit = true;
+            if (hasItem == false) {
+                StartCoroutine(getItem());
+                ItemUIScroll.SetBool("Scroll", true); // animation 
+            }
         }
 
     }
- 
-    IEnumerator RespawnCheck(GameObject ThatItem)
+    private void OnTriggerStay(Collider other) // get hit when it stay
+    {
+        if (other.gameObject.tag == "ItemBox" && gethit == false)
+        {
+            OnTriggerEnter(other);
+
+        }
+    }
+    IEnumerator RespawnCheck(GameObject ThatItem)// Respawn
     {
         yield return new WaitForSeconds(5);
+        gethit = false;
         ThatItem.GetComponent<Animator>().SetBool("Enlarge", false);
-        Debug.Log("respawn");
     }
 
     public IEnumerator getItem()
     {
         if (!hasItem)
         {
-            index = Random.Range(0, itemGameObjects.Length);
-            yourSprite.sprite = itemSprites[index];
-            yield return new WaitForSeconds(10f);
-
-            itemGameObjects[index].SetActive(true);
+            index = Random.Range(0, itemGameObjects.Length);            
+            yield return new WaitForSeconds(2);
+            yourSprite.GetComponent<Image>().sprite = itemSprites[index];
+            ItemUIScroll.SetBool("Scroll", false);
+            yourSprite.GetComponent<Image>().color = new Color(255,255,255);
             hasItem = true;
         }
     }
@@ -63,8 +73,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             hasItem = false;
-            ItemUIScroll.SetBool("Scroll", false);
-            itemGameObjects[index].SetActive(false);
+            yourSprite.GetComponent<Image>().color = new Color(0, 0, 0);
+            yourSprite.GetComponent<Image>().sprite = null;
         }
     }
 
