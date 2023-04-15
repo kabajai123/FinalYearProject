@@ -28,10 +28,10 @@ public class CreateRoadMesh : MonoBehaviour
         GetComponent<MeshFilter>().mesh = mesh; // CreateMesh();
         Vector3 Pos = Camea.transform.position;
         KeyPoint.Add(Camea.transform.position);
-        getVector.Add(new Vector3(Pos.x + 1, 0, Pos.z));// 1,0,0
-        getVector.Add(new Vector3(Pos.x - 1, 0, Pos.z));//-1,0,0
-        getVector.Add(new Vector3(Pos.x + 1, -0.01f, Pos.z));// 1,-0.01,0
-        getVector.Add(new Vector3(Pos.x - 1, -0.01f, Pos.z));//-1,-0.01,0
+        getVector.Add(new Vector3(Pos.x + 1, 499.8f, Pos.z));// 1,0,0
+        getVector.Add(new Vector3(Pos.x - 1, 499.8f, Pos.z));//-1,0,0
+        getVector.Add(new Vector3(Pos.x + 1, 499.7f, Pos.z));// 1,-0.01,0
+        getVector.Add(new Vector3(Pos.x - 1, 499.7f, Pos.z));//-1,-0.01,0
         //GameObject Road =Instantiate(PrefabRoad, Camea.transform.position, Quaternion.identity);
         Rotate = Camea.transform.rotation;
 
@@ -45,10 +45,10 @@ public class CreateRoadMesh : MonoBehaviour
             Rotate = Camea.transform.rotation;
             Vector3 Pos = Camea.transform.position;
             KeyPoint.Add(Camea.transform.position);
-            getVector.Add(new Vector3(Pos.x + 1, 0, Pos.z));
-            getVector.Add(new Vector3(Pos.x - 1, 0, Pos.z));
-            getVector.Add(new Vector3(Pos.x + 1, -0.01f, Pos.z));
-            getVector.Add(new Vector3(Pos.x - 1, -0.01f, Pos.z));
+            getVector.Add(new Vector3(Pos.x + 1, 499.8f, Pos.z));
+            getVector.Add(new Vector3(Pos.x - 1, 499.8f, Pos.z));
+            getVector.Add(new Vector3(Pos.x + 1, 499.7f, Pos.z));
+            getVector.Add(new Vector3(Pos.x - 1, 499.7f, Pos.z));
             KeyPointCount++;
             CreateMesh();
         }

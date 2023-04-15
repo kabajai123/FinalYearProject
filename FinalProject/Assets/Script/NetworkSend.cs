@@ -15,7 +15,7 @@ public class NetworkSend : MonoBehaviour
     string input;
 
     string CheckRepeat = "example";
-
+    
     private void FixedUpdate()
     {
         //input = Input.inputString;
@@ -61,11 +61,12 @@ public class NetworkSend : MonoBehaviour
             //Back Forward of the Car
             Send("6");
         }
+              
     }
 
-    
     public void Send(string message)
     {
+       
         if (CheckRepeat.Equals(message)==false) {
             string my_command = CarIpAddress + message;
             Debug.Log(my_command);

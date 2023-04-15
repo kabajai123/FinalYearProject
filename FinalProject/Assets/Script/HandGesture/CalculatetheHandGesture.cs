@@ -41,6 +41,7 @@ public class CalculatetheHandGesture : MonoBehaviour
     {
         _KeepTrackRPosition = new List<Vector3>();
         _KeepTrackLPosition = new List<Vector3>();
+
     }
 
     void Update()
@@ -125,7 +126,7 @@ public class CalculatetheHandGesture : MonoBehaviour
             }
         }
     }
-
+    
     public void driving()
     {
         //Detecting the hand the CenterPoint will show

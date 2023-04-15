@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    private Rigidbody rb;
     public float speed = .1f;
 
     private bool hasItem = false;
@@ -14,56 +13,36 @@ public class Player : MonoBehaviour
     public Image yourSprite;
 
     public Animator ItemUIScroll;
-
     int index;
-
-    //Animator itemAnimator;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
     void Update()
     {
-        Move();
-
         if (hasItem)
         {
             useItem();
         }
+       
     }
-
-    void Move()
+    private void OnTriggerEnter(Collider other) // get hit with item
     {
-        float xDirection = Input.GetAxis("Horizontal");
-        float zDirection = Input.GetAxis("Vertical");
-
-        Vector3 moveDirection = new
-
-        Vector3(xDirection, 0.0f, zDirection);
-
-        transform.position += moveDirection * speed;
-    }
-
-    private IEnumerator OnTriggerEnter(Collider other)
-    {
+        Debug.Log("yo");
         if (other.gameObject.tag == "ItemBox")
         {
-            other.gameObject.GetComponent<SphereCollider>().enabled = false;
+            Debug.Log("enter");
             other.gameObject.GetComponent<Animator>().SetBool("Enlarge", true);
-
-            StartCoroutine(getItem());
+            //StartCoroutine(getItem());
             ItemUIScroll.SetBool("Scroll", true);
-
-            yield return new WaitForSeconds(1);
-            int name = Animator.StringToHash("SpawnItemBox");
-
-            other.gameObject.GetComponent<Animator>().SetBool("Enlarge", false);
-            other.gameObject.GetComponent<SphereCollider>().enabled = true;
-
+            StartCoroutine(RespawnCheck(other.gameObject));
+            
         }
 
+    }
+ 
+    IEnumerator RespawnCheck(GameObject ThatItem)
+    {
+        yield return new WaitForSeconds(5);
+        ThatItem.GetComponent<Animator>().SetBool("Enlarge", false);
+        Debug.Log("respawn");
     }
 
     public IEnumerator getItem()

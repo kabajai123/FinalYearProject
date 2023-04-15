@@ -1137,6 +1137,11 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8245486012406457479, guid: a0e857c60e69aca4eb4495688ad9ca02,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8245486012406458234, guid: a0e857c60e69aca4eb4495688ad9ca02,
         type: 3}
       propertyPath: m_RootOrder
@@ -1871,6 +1876,7 @@ MonoBehaviour:
   itemSprites:
   - {fileID: 21300000, guid: 6155f6d81cbf843dcbf2eca11d74f954, type: 3}
   - {fileID: 21300000, guid: 1d998a48641f549f38d800d534ab0325, type: 3}
+  yourSprite: {fileID: 0}
   ItemUIScroll: {fileID: 568804381}
 --- !u!1 &1503778447
 GameObject:
