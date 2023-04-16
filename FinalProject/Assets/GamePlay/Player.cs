@@ -7,13 +7,15 @@ public class Player : MonoBehaviour
 {
     public float speed = .1f;
 
+    public GameObject ItemRocket;
+    public GameObject IceCream;
     private bool hasItem = false;
     public GameObject[] itemGameObjects;
     public Sprite[] itemSprites;
     public GameObject yourSprite;
 
     public Animator ItemUIScroll;
-    int index;
+    public int index;
 
     void Update()
     {
@@ -75,6 +77,10 @@ public class Player : MonoBehaviour
             hasItem = false;
             yourSprite.GetComponent<Image>().color = new Color(0, 0, 0);
             yourSprite.GetComponent<Image>().sprite = null;
+            if (index ==1 ) {
+                Instantiate(ItemRocket, transform.position, new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w));
+                
+            }
         }
     }
 
