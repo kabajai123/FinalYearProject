@@ -10,6 +10,7 @@ public class CreateRoadReadFile : MonoBehaviour
     Vector3 g_camerpos;
     public string AssetPath;
     GameFunction gameFunction;
+    List<Vector3> keyframe;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class CreateRoadReadFile : MonoBehaviour
         g_camerpos = new Vector3(500,499.9f,500);
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
+        keyframe = new List<Vector3>();
 
 
         CreateMesh();
@@ -44,11 +46,12 @@ public class CreateRoadReadFile : MonoBehaviour
 
         mesh.vertices = ReadFile().ToArray();
         mesh.triangles = triangles.ToArray();
-        gameFunction.SpawnItemAndStart(ReadFile());
+        gameFunction.SpawnItemAndStart(keyframe);
     }
 
     List<Vector3> ReadFile()
     {
+        keyframe.Clear();
         StreamReader reader = new StreamReader(AssetPath);
         float x = 0, y = 0, z = 0;
         List<Vector3> getVector = new List<Vector3>();
@@ -59,9 +62,9 @@ public class CreateRoadReadFile : MonoBehaviour
             x = float.Parse(line[1]);
             y = float.Parse(line[2]);
             z = float.Parse(line[3]);
-            getVector.Add(new Vector3(x + 0.1f, 0, z) * 10 + g_camerpos);
-            getVector.Add(new Vector3(x - 0.1f, 0, z) * 10 + g_camerpos);
-
+            getVector.Add(new Vector3(x + 0.1f, 0, z) * 100 + g_camerpos);
+            getVector.Add(new Vector3(x - 0.1f, 0, z) * 100 + g_camerpos);
+            keyframe.Add(new Vector3(x, 0, z)*100+g_camerpos);
 
         }
         reader.Close();
