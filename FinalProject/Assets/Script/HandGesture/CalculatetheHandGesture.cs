@@ -164,17 +164,18 @@ public class CalculatetheHandGesture : MonoBehaviour
             _Command.Send("5");
         }
 
+        //Turning Right
+        if (_Langle > 20 && _Langle < 89 && _KeepTrackLPosition[listKeepTrackLCount - 1].y < 0f)
+        {
+            _Command.Send("4");
+        }
+
         //Moving Forward the Car
         if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab && _Langle < 20 && _Rangle < 20)
         {
             _Command.Send("1");
         }
 
-        //Turning Right
-        if (_Langle > 20 && _Langle < 89 && _KeepTrackLPosition[listKeepTrackLCount - 1].y < 0f)
-        {
-            _Command.Send("4");
-        }
     }
     public void getHandPositionFirst()
     {
