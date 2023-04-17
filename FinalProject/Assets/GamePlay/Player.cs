@@ -77,8 +77,12 @@ public class Player : MonoBehaviour
             hasItem = false;
             yourSprite.GetComponent<Image>().color = new Color(0, 0, 0);
             yourSprite.GetComponent<Image>().sprite = null;
+            if (index == 0) {
+                Instantiate(IceCream, transform.position, transform.rotation);
+            }
+            
             if (index ==1 ) {
-                Instantiate(ItemRocket, transform.position, new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w));
+                Instantiate(ItemRocket, transform.position, transform.rotation);
                 
             }
         }

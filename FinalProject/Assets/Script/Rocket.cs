@@ -17,7 +17,7 @@ public class Rocket : MonoBehaviour
     {
         time += Time.deltaTime;
         
-        transform.position += transform.right * 5 * Time.deltaTime;
+        transform.position += transform.right * 10 * Time.deltaTime;
         if (time>10) { Destroy(gameObject); }
     }
 }
