@@ -43,7 +43,7 @@ public class TutorialScript : MonoBehaviour
                 UpdateMessage.text = "Let's have fun!!! ";
                 break;
             case 5:
-                UnityEngine.SceneManagement.SceneManager.LoadScene("MainCarScene");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenuScene_demo");
                 break;
         }
         WordsNum++;
