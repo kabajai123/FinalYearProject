@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 
 [RequireComponent(typeof(MeshFilter))]
-public class CreateRoadMesh : MonoBehaviour
+public class CreateRoadMeshRealTime : MonoBehaviour
 {
 
     Mesh mesh;

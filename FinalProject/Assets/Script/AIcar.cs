@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AIcar : MonoBehaviour
 {
-    CreateRoadMesh createRoadMesh;
+    CreateRoadMeshRealTime createRoadMesh;
     public GameObject getRoadList;
     /// <summary>
     /// This script is for ai moving and control
@@ -15,7 +15,7 @@ public class AIcar : MonoBehaviour
     float PointCount;
     void Start()
     {
-        createRoadMesh = getRoadList.GetComponent<CreateRoadMesh>();
+        createRoadMesh = getRoadList.GetComponent<CreateRoadMeshRealTime>();
 
     }
     

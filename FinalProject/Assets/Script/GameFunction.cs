@@ -4,22 +4,13 @@ using UnityEngine;
 
 public class GameFunction : MonoBehaviour
 {
-    public GameObject Rocket;
-   
     public GameObject Player;
-    public GameObject AI;
-    public void PlayItem() { 
-    
+    public int Itemlist;
+    public int itemNum;
 
-    }
+    public void SpawnItemAndStart(List<Vector3> keyFrame) { 
+        
 
-    public void PlayIceCreamCone() { 
-    
-
-    }
-
-    public void PlayRocket() { 
-    
 
     }
     // Update is called once per frame
