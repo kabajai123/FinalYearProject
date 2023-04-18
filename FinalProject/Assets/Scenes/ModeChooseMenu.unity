@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Choose Mode
+  m_text: Mode Selection
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 8b29aaa3eec7468097ff07adfcf29ac9, type: 2}
@@ -1827,10 +1827,8 @@ MonoBehaviour:
   ConfirmNewRacewayMenu: {fileID: 0}
   _WarrningObject: {fileID: 0}
   _Warrning: {fileID: 0}
-  createNRBtn: 0
   _PVPObject: {fileID: 541983145}
   _PVP: {fileID: 541983146}
-  modeProgress: 0
 --- !u!114 &1899711094
 MonoBehaviour:
   m_ObjectHideFlags: 0
