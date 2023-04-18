@@ -40,6 +40,11 @@ public class Player : MonoBehaviour
                 ItemUIScroll.SetBool("Scroll", true); // animation 
             }
         }
+        if (other.gameObject.tag == "EndPoint") {
+            /*
+             GameEnd Funciton in here
+             */        
+        }
 
     }
     private void OnTriggerStay(Collider other) // get hit when it stay
