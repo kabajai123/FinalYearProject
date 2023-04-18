@@ -45,6 +45,9 @@ public class Player : MonoBehaviour
              GameEnd Funciton in here
              */        
         }
+        if (other.gameObject.tag == "Coin") {
+            Destroy(other.gameObject);
+        }
 
     }
     private void OnTriggerStay(Collider other) // get hit when it stay

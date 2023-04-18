@@ -8,6 +8,7 @@ TagManager:
   - PlayerControl
   - Road
   - EndPoint
+  - Coin
   layers:
   - Default
   - TransparentFX
