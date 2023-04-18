@@ -366,6 +366,8 @@ MonoBehaviour:
   itemNum: 0
   cube: {fileID: 5925287268632250546, guid: 4235bf7aea45c9941bd18133a63ead24, type: 3}
   item: {fileID: 6948968896017421394, guid: 9f7a6fbb57bac394e85ae2b319e7b0ba, type: 3}
+  Endpoint: {fileID: 5411421982946839137, guid: 24ead0b2b2af5f641ad3edac26d51488,
+    type: 3}
   SpawnPosition: []
 --- !u!114 &220248391
 MonoBehaviour:
@@ -379,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b0d02f658a5d148b2b1b8d5d06994d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AssetPath: Assets\Script\D0711_kf_traj_02Ver.txt
+  AssetPath: 
 --- !u!1 &244370227
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +395,7 @@ GameObject:
   - component: {fileID: 244370231}
   - component: {fileID: 244370230}
   m_Layer: 0
-  m_Name: CameraHitBox
+  m_Name: CameraHitBox_plaeyer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,7 +409,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244370227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 500, y: 500, z: 500}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -438,8 +440,8 @@ MonoBehaviour:
   itemSprites:
   - {fileID: 21300000, guid: cdd7b14ad23b8364e8e8deb1a35de825, type: 3}
   - {fileID: 21300000, guid: 1d998a48641f549f38d800d534ab0325, type: 3}
-  yourSprite: {fileID: 0}
-  ItemUIScroll: {fileID: 0}
+  yourSprite: {fileID: 2082635556}
+  ItemUIScroll: {fileID: 123637468}
   index: 0
 --- !u!54 &244370231
 Rigidbody:
@@ -488,7 +490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &293502787
 RectTransform:
   m_ObjectHideFlags: 0
@@ -521,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d768e317e912d4ea1212333bee24a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamAddress: http://192.168.1.11:8080/video
+  streamAddress: http://192.168.1.9:8080/video
   showFps: 1
   chunkSize: 4
 --- !u!114 &293502789
@@ -1339,7 +1341,7 @@ BoxCollider:
   m_GameObject: {fileID: 992032218}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2054,7 +2056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3d7e0c3d1ed3e4d9e521e2c928ee5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarCamera: {fileID: 802945231}
+  CarCamera: {fileID: 244370227}
 --- !u!114 &1258120635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2892,9 +2894,9 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992243084}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2000}
-  m_LocalScale: {x: 1000, y: 1000, z: 1000}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1341273243}
   - {fileID: 1035439200}
@@ -2903,7 +2905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1024500, y: 479250}
+  m_AnchoredPosition: {x: -159, y: -570}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1992243086

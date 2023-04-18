@@ -40,6 +40,11 @@ public class Player : MonoBehaviour
                 ItemUIScroll.SetBool("Scroll", true); // animation 
             }
         }
+        if (other.gameObject.tag == "EndPoint") {
+            /*
+             GameEnd Funciton in here
+             */        
+        }
 
     }
     private void OnTriggerStay(Collider other) // get hit when it stay
@@ -78,11 +83,13 @@ public class Player : MonoBehaviour
             yourSprite.GetComponent<Image>().color = new Color(0, 0, 0);
             yourSprite.GetComponent<Image>().sprite = null;
             if (index == 0) {
-                Instantiate(IceCream, transform.position, transform.rotation);
+                Vector3 position = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
+                Instantiate(IceCream, position, transform.rotation);
             }
             
             if (index ==1 ) {
-                Instantiate(ItemRocket, transform.position, transform.rotation);
+                Vector3 position = new Vector3(transform.position.x, transform.position.y + 0.25f, transform.position.z);
+                Instantiate(ItemRocket, position, transform.rotation);
                 
             }
         }
