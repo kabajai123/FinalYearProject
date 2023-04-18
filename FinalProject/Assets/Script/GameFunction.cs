@@ -9,14 +9,15 @@ public class GameFunction : MonoBehaviour
     public float[] Itemlist;
     //public int itemNum;
     public int CoinNum;
-
+    public int monsterNum;
     Vector3[] keyframe;
     Vector3 start, end;
     public GameObject cube;
     public GameObject item;
     public GameObject Endpoint;
     public GameObject Coin;
-    public GameObject CoinPos;
+    public GameObject Pos;
+    public GameObject Monster;
     public List<Vector3> SpawnPosition;
 
 
@@ -36,12 +37,21 @@ public class GameFunction : MonoBehaviour
             float RandH = UnityEngine.Random.Range(-10,10);
             Vector3 RandPos = new Vector3(keyframe[RandS].x+RandH, keyframe[RandS].y, keyframe[RandS].z);
             GameObject ThatCoin = Instantiate(Coin, RandPos, transform.rotation);
-            GameObject pos = Instantiate(CoinPos, RandPos, transform.rotation);  
+            GameObject pos = Instantiate(Pos, RandPos, transform.rotation);  
             ThatCoin.transform.parent = pos.transform;
             pos.transform.parent = transform;
         }
-        
-        
+        for (int i = 0; i < monsterNum; i++)
+        {
+            int RandS = UnityEngine.Random.Range(0, straight);
+            float RandH = UnityEngine.Random.Range(-10, 10);
+            Vector3 RandPos = new Vector3(keyframe[RandS].x + RandH, keyframe[RandS].y, keyframe[RandS].z);
+            GameObject ThatMonster = Instantiate(Monster, RandPos, transform.rotation);
+            GameObject pos = Instantiate(Pos, RandPos, transform.rotation);
+            ThatMonster.transform.parent = pos.transform;
+            pos.transform.parent = transform;
+        }
+
         /*
         float num = 0;
         keyframe = keyFrame.ToArray();

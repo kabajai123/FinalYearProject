@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
+    MonusterAutoAnimaiton monusterAutoAnimaiton;
     float time;
     // Start is called before the first frame update
     void Start()
@@ -20,4 +21,14 @@ public class Rocket : MonoBehaviour
         transform.position += transform.right * 10 * Time.deltaTime;
         if (time>10) { Destroy(gameObject); }
     }
+    private void OnTriggerEnter(Collider other) // hit monster
+    {
+        if (other.gameObject.tag == "Monster") {
+            Debug.Log("diu");
+            monusterAutoAnimaiton = other.GetComponent<MonusterAutoAnimaiton>();
+            monusterAutoAnimaiton.StartCoroutine(monusterAutoAnimaiton.Die());
+            Destroy(gameObject);
+        }
+    }
+
 }

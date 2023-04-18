@@ -364,12 +364,14 @@ MonoBehaviour:
   - 0.6
   - 0.1
   CoinNum: 20
+  monsterNum: 10
   cube: {fileID: 5925287268632250546, guid: 4235bf7aea45c9941bd18133a63ead24, type: 3}
   item: {fileID: 6948968896017421394, guid: 9f7a6fbb57bac394e85ae2b319e7b0ba, type: 3}
   Endpoint: {fileID: 5411421982946839137, guid: 24ead0b2b2af5f641ad3edac26d51488,
     type: 3}
   Coin: {fileID: 1807807211003938167, guid: df76b23787d24c84493acf3af6a4cc75, type: 3}
-  CoinPos: {fileID: 3159951581674910603, guid: 55d1517b0ce9ecd4ab574824e8c038d9, type: 3}
+  Pos: {fileID: 3159951581674910603, guid: 55d1517b0ce9ecd4ab574824e8c038d9, type: 3}
+  Monster: {fileID: 3858436469596520352, guid: 08c4fde4da34f764fbfad989fadc2db2, type: 3}
   SpawnPosition: []
 --- !u!114 &220248391
 MonoBehaviour:
@@ -398,7 +400,7 @@ GameObject:
   - component: {fileID: 244370230}
   m_Layer: 0
   m_Name: CameraHitBox_plaeyer
-  m_TagString: Untagged
+  m_TagString: PlayerCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

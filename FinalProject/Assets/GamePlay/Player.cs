@@ -46,6 +46,10 @@ public class Player : MonoBehaviour
              */        
         }
         if (other.gameObject.tag == "Coin") {
+            /*
+             Get Coin
+             */
+            Destroy(other.gameObject.transform.parent.gameObject);
             Destroy(other.gameObject);
         }
 
