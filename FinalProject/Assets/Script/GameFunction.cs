@@ -43,12 +43,14 @@ public class GameFunction : MonoBehaviour
     void test() {
         for (int i =0; i< SpawnPosition.Count;i++) {
             Instantiate(item,new Vector3(SpawnPosition[i].x, SpawnPosition[i].y+0.5f, SpawnPosition[i].z),transform.rotation);
+            
         }
+        /* spawn cube to know where is keyframe
         for (int i= 0; i<keyframe.Length;i++) {
             Instantiate(cube, keyframe[i], transform.rotation);
 
         }
-
+        */
     }
 
     void Update()
