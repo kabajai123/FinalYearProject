@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using NRKernal;
 
 public class Player : MonoBehaviour
 {
@@ -82,9 +83,24 @@ public class Player : MonoBehaviour
         }
     }
 
+    public HandState _RightHandState;
+    public HandState _LeftHandState;
+    public HandJointID[] handJoint;
+    public HandEnum handEnum;
+
+    void Start()
+    {
+        //Get Left & Right Hand
+        _RightHandState = NRInput.Hands.GetHandState(HandEnum.RightHand);
+        _LeftHandState = NRInput.Hands.GetHandState(HandEnum.LeftHand);
+
+        var handState = new HandState(handEnum);
+        handState.isTracked = true;
+    }
+
     public void useItem()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) || _RightHandState.currentGesture == HandGesture.UsingItem && _RightHandState.isTracked == true)
         {
             hasItem = false;
             yourSprite.GetComponent<Image>().color = new Color(0, 0, 0);
