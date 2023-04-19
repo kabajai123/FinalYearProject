@@ -41,7 +41,6 @@ public class CalculatetheHandGesture : MonoBehaviour
     {
         _KeepTrackRPosition = new List<Vector3>();
         _KeepTrackLPosition = new List<Vector3>();
-
     }
 
     void Update()

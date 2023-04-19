@@ -20,19 +20,23 @@ public class GameFunction : MonoBehaviour
     public GameObject Monster;
     public List<Vector3> SpawnPosition;
 
-
-    public void SpawnItemAndStart(List<Vector3> keyFrame) {
+    public void SpawnItemAndStart(List<Vector3> keyFrame)
+    {
         keyframe = keyFrame.ToArray();
         start = keyframe[0];
         end = keyframe[keyframe.Length - 1];
-        for (int i =0;i<Itemlist.Length;i++) {
+
+        for (int i =0;i<Itemlist.Length;i++)
+        {
             float num = MathF.Floor(keyframe.Length*Itemlist[i]);
-            SpawnPosition.Add(keyFrame[(int)num]);
-        
+            SpawnPosition.Add(keyFrame[(int)num]);        
         }
+
         Instantiate(Endpoint,new Vector3(end.x,end.y+0.5f,end.z),transform.rotation); // spawn Endpoint
         int straight = keyframe.Length; 
-        for (int i =0;i<CoinNum;i++) {
+
+        for (int i =0;i<CoinNum;i++)
+        {
             int RandS = UnityEngine.Random.Range(0,straight);
             float RandH = UnityEngine.Random.Range(-10,10);
             Vector3 RandPos = new Vector3(keyframe[RandS].x+RandH, keyframe[RandS].y, keyframe[RandS].z);
@@ -41,6 +45,7 @@ public class GameFunction : MonoBehaviour
             ThatCoin.transform.parent = pos.transform;
             pos.transform.parent = transform;
         }
+
         for (int i = 0; i < monsterNum; i++)
         {
             int RandS = UnityEngine.Random.Range(0, straight);
@@ -63,8 +68,7 @@ public class GameFunction : MonoBehaviour
         }*/
         for (int i = 0; i < SpawnPosition.Count; i++)
         {
-            Instantiate(item, new Vector3(SpawnPosition[i].x, SpawnPosition[i].y + 0.5f, SpawnPosition[i].z), transform.rotation);
-           
+            Instantiate(item, new Vector3(SpawnPosition[i].x, SpawnPosition[i].y + 0.5f, SpawnPosition[i].z), transform.rotation);           
         }
 
         /* spawn cube to know where is keyframe
@@ -72,10 +76,5 @@ public class GameFunction : MonoBehaviour
             Instantiate(cube, keyframe[i], transform.rotation);
         }
         */
-    }
-
-    void Update()
-    {
-        
     }
 }

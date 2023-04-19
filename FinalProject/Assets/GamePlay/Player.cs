@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using NRKernal;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -18,18 +19,20 @@ public class Player : MonoBehaviour
     public Animator ItemUIScroll;
     public int index;
 
+    public TMP_Text _ScoreText;
+    public float _score = 0;
+    public float _addScore = 10;
+
     void Update()
     {
         if (hasItem)
         {
             useItem();
-        }
-       
+        }       
     }
     bool gethit;
     private void OnTriggerEnter(Collider other) // get hit with item
-    {
-        
+    {        
         if (other.gameObject.tag == "ItemBox")
         {
             other.gameObject.GetComponent<Animator>().SetBool("Enlarge", true);
@@ -41,17 +44,20 @@ public class Player : MonoBehaviour
                 ItemUIScroll.SetBool("Scroll", true); // animation 
             }
         }
-        if (other.gameObject.tag == "EndPoint") {
+
+        if (other.gameObject.tag == "EndPoint")
+        {
             /*
              GameEnd Funciton in here
              */        
         }
-        if (other.gameObject.tag == "Coin") {
-            /*
-             Get Coin
-             */
+
+        if (other.gameObject.tag == "Coin")
+        {            
             Destroy(other.gameObject.transform.parent.gameObject);
             Destroy(other.gameObject);
+            _score += _addScore;
+            _ScoreText.text = "Score: " + _score.ToString();
         }
 
     }
@@ -60,9 +66,9 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "ItemBox" && gethit == false)
         {
             OnTriggerEnter(other);
-
         }
     }
+
     IEnumerator RespawnCheck(GameObject ThatItem)// Respawn
     {
         yield return new WaitForSeconds(5);
