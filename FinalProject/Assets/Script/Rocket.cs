@@ -24,7 +24,7 @@ public class Rocket : MonoBehaviour
     private void OnTriggerEnter(Collider other) // hit monster
     {
         if (other.gameObject.tag == "Monster") {
-            Debug.Log("diu");
+           
             monusterAutoAnimaiton = other.GetComponent<MonusterAutoAnimaiton>();
             monusterAutoAnimaiton.StartCoroutine(monusterAutoAnimaiton.Die());
             Destroy(gameObject);
