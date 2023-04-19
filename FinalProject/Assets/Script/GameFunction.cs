@@ -32,7 +32,7 @@ public class GameFunction : MonoBehaviour
             SpawnPosition.Add(keyFrame[(int)num]);        
         }
 
-        Instantiate(Endpoint,new Vector3(end.x,end.y+0.5f,end.z),transform.rotation); // spawn Endpoint
+        Instantiate(Endpoint, new Vector3(end.x,end.y,end.z),transform.rotation); // spawn Endpoint
         int straight = keyframe.Length; 
 
         for (int i =0;i<CoinNum;i++)

@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
     public bool checkEnd = false;
 
     public AudioClip _spin;
+    public AudioClip _Coins;
     public AudioSource audioSource;
 
     void Update()
@@ -109,7 +110,7 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine(getItem());
                 ItemUIScroll.SetBool("Scroll", true); // animation 
-                audioSource.PlayOneShot(_spin, 0.3f);
+                audioSource.PlayOneShot(_spin, 0.05f);
             }
         }
 
@@ -148,6 +149,7 @@ public class Player : MonoBehaviour
         {            
             Destroy(other.gameObject.transform.parent.gameObject);
             Destroy(other.gameObject);
+            audioSource.PlayOneShot(_Coins, 0.05f);
             _score += _addScore;
             _ScoreText.text = "Score: " + _score.ToString();
         }
