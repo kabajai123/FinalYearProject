@@ -59,6 +59,7 @@ public class CreateRoadReadFile : MonoBehaviour
         List<Vector3> getVector = new List<Vector3>();
         string[] reader = txtstring.Split('\n');
         
+
         for (int i =0; i< reader.Length-1;i++)
         {
             string[] line = new string[8];
