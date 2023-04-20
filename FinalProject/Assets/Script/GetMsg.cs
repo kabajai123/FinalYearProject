@@ -21,10 +21,10 @@ public class GetMsg : MonoBehaviour
     {
 
         Cut = _msg.msg.Split("\n");
-        string[] x = Cut[Cut.Length - 8].Split(" ");
+        string[] x = Cut[Cut.Length - 8].Split(" ");    //position x,y,z
         string[] y = Cut[Cut.Length - 7].Split(" ");
         string[] z = Cut[Cut.Length - 6].Split(" ");
-        string[] rx = Cut[Cut.Length - 4].Split(" ");
+        string[] rx = Cut[Cut.Length - 4].Split(" ");   //rotation x,y,z,w
         string[] ry = Cut[Cut.Length - 3].Split(" ");
         string[] rz = Cut[Cut.Length - 2].Split(" ");
         string[] rw = Cut[Cut.Length - 1].Split(" ");
@@ -34,9 +34,6 @@ public class GetMsg : MonoBehaviour
             CarCamera.transform.rotation = new Quaternion(float.Parse(rx[rx.Length - 1]), float.Parse(ry[ry.Length - 1]), float.Parse(rz[rz.Length - 1]), float.Parse(rw[rw.Length - 1]));
         }
         // This function is for moving the camera in real time
-
-       
-
     }
 
     void Map(Map _data)

@@ -160,13 +160,13 @@ public class CalculatetheHandGesture : MonoBehaviour
         //Turning Left
         if (_Rangle > 20 && _Rangle < 89 && _KeepTrackRPosition[listKeepTrackRCount - 1].y > 0f)
         {
-            _Command.Send("5");
+            _Command.Send("4");
         }
 
         //Turning Right
         if (_Langle > 20 && _Langle < 89 && _KeepTrackLPosition[listKeepTrackLCount - 1].y < 0f)
         {
-            _Command.Send("4");
+            _Command.Send("5");
         }
 
         //Moving Forward the Car
