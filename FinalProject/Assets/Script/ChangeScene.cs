@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    public GameObject menubin;
     public void EndGameRestart()
     {
         SceneManager.LoadScene("MainCarScene");
@@ -12,6 +13,8 @@ public class ChangeScene : MonoBehaviour
 
     public void EndGameMenu()
     {
+        menubin.SetActive(false);
         SceneManager.LoadScene("MainMenuScene_demo");
+
     }
 }
