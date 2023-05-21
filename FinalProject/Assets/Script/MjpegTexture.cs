@@ -73,8 +73,8 @@ public class MjpegTexture : MonoBehaviour
             tex.LoadImage(mjpeg.CurrentFrame);
             // tex.Apply();
             // Assign texture to renderer's material.
-            //GetComponent<Renderer>().material.mainTexture = tex;
-            GetComponent<RawImage>().texture = tex;
+            GetComponent<Renderer>().material.mainTexture = tex;
+            //GetComponent<RawImage>().texture = tex;
             updateFrame = false;
 
             mjpegDeltaTime += (deltaTime - mjpegDeltaTime) * 0.2f;
