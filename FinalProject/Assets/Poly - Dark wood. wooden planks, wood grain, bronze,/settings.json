@@ -1,0 +1,23 @@
+{
+  "prompt_text": "Dark wood. wooden planks, wood grain, bronze,",
+  "patch": {
+    "ext": "png",
+    "dtype": "uint8",
+    "width": 512,
+    "height": 512,
+    "url": "https://static-dev.withpoly.com/v3/textures/patches/60a3e314-c448-42a5-85f1-e14aa02b8f2a.png",
+    "patch_id": "NPiuyaRQg3"
+  },
+  "seamless_prompt_text": "Dark wood. wooden planks, wood grain, bronze,",
+  "seamless_patch_scale": 0.92,
+  "upscale_prompt_text": "Dark wood. wooden planks, wood grain, bronze,",
+  "upscale_resolution": 2048,
+  "is_seamless": true,
+  "pbr_mode": "matte",
+  "pbr_generate_color": true,
+  "pbr_generate_normal": true,
+  "pbr_generate_height": true,
+  "pbr_generate_ao": true,
+  "pbr_generate_roughness": true,
+  "pbr_generate_metallic": false
+}
