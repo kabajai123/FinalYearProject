@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using NRKernal;
+using Oculus.Interaction.Input;
+using Oculus.Interaction;
 
 public class CalculatetheHandGesture : MonoBehaviour
 {
@@ -10,6 +12,15 @@ public class CalculatetheHandGesture : MonoBehaviour
     public HandState _LeftHandState;
     public HandJointID[] handJoint;
     public HandEnum handEnum;
+
+    public ActiveStateSelector _Rockpose;
+    public HandFingerJointFlags[] _handJoint;
+    public Handedness _handedness;
+
+    [SerializeField]
+    private GameObject _poseActiveVisualPrefab;
+
+    private GameObject[] _poseActiveVisuals;
 
     public GameObject RingObject;
     private GameObject _savingRing;
@@ -48,27 +59,45 @@ public class CalculatetheHandGesture : MonoBehaviour
         findHand();
         addingPositionList();
 
+        //if (!isSpawned)
+        //{
+        //    //Make sure just Spawn 1 cube
+        //    spawnObj();
+        //}
+        ////else if (_RightHandState.isTracked == false && _RightHandState.currentGesture == HandGesture.None)
+        //else if (_RightHandState.isTracked == false && _RightHandState.currentGesture == HandGesture.None && _LeftHandState.isTracked == false && _LeftHandState.currentGesture == HandGesture.None)
+        //{
+        //    //Cannot Detect the hand the CenterPoint will disappear
+        //    _savingRing.SetActive(false);
+        //    lostHandPosition();
+        //    Debug.Log("Active the sphere = false");
+        //}
+        ////else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
+        //else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
+        //{
+        //    //Detecting the hand the CenterPoint will show
+        //    _savingRing.SetActive(true);
+        //    driving();
+        //    Debug.Log("Active the sphere = true");
+        //}
+
         if (!isSpawned)
         {
-            //Make sure just Spawn 1 cube
             spawnObj();
         }
-        //else if (_RightHandState.isTracked == false && _RightHandState.currentGesture == HandGesture.None)
-        else if (_RightHandState.isTracked == false && _RightHandState.currentGesture == HandGesture.None && _LeftHandState.isTracked == false && _LeftHandState.currentGesture == HandGesture.None)
+        else if (_Rockpose.isUsing == true)
         {
-            //Cannot Detect the hand the CenterPoint will disappear
-            _savingRing.SetActive(false);
-            lostHandPosition();
-            Debug.Log("Active the sphere = false");
+
         }
-        //else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
-        else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
-        {
-            //Detecting the hand the CenterPoint will show
-            _savingRing.SetActive(true);
-            driving();
-            Debug.Log("Active the sphere = true");
-        }
+
+    }
+
+    private void trackDrive()
+    {
+        //Detecting the hand the CenterPoint will show
+        _savingRing.SetActive(true);
+        driving();
+        Debug.Log("Active the sphere = true");
     }
 
     public void spawnObj()

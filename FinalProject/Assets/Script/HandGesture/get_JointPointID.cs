@@ -13,7 +13,7 @@ public class get_JointPointID : MonoBehaviour
     public HandState _RightHandState;
 
     void Update()
-    {
+    { 
         _RightHandState = NRInput.Hands.GetHandState(HandEnum.RightHand);
 
         for (int i = 0; i < 23; i++)
@@ -22,7 +22,7 @@ public class get_JointPointID : MonoBehaviour
             transform.position = _RightJointPose[i].position;
             _RightJointPoseIDPosition[i].text = handJointID[i] + _RightJointPose[i].position.ToString();
             transform.rotation = _RightJointPose[i].rotation;
-            _RightJointPoseIDRotation[i].text = handJointID[i] + _RightJointPose[i].rotation.ToString();
+            _RightJointPoseIDRotation[i].text = handJointID[i] + _RightJointPose[i].rotation.ToString(); 
         }
     }
 }

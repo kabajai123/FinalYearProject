@@ -33,6 +33,7 @@ namespace Oculus.Interaction
         protected IActiveState ActiveState { get; private set; }
 
         private bool _selecting = false;
+        public bool isUsing;
 
         public event Action WhenSelected = delegate { };
         public event Action WhenUnselected = delegate { };
@@ -45,6 +46,7 @@ namespace Oculus.Interaction
         protected virtual void Start()
         {
             this.AssertField(ActiveState, nameof(ActiveState));
+            isUsing = false;
         }
 
         protected virtual void Update()
@@ -55,10 +57,13 @@ namespace Oculus.Interaction
                 if (_selecting)
                 {
                     WhenSelected();
+
+                    isUsing = true;
                 }
                 else
                 {
                     WhenUnselected();
+                    isUsing = false;
                 }
             }
         }
