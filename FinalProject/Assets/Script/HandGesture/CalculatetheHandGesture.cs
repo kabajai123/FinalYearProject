@@ -11,9 +11,8 @@ public class CalculatetheHandGesture : MonoBehaviour
     //public HandJointID[] handJoint;
     //public HandEnum handEnum;
 
-    public ActiveStateGroup _Rockpose;
-    public HandFingerJointFlags[] _handJoint;
-    public Handedness _RhandednessState;
+    public ActiveStateGroup _RockposeR;
+    public ActiveStateGroup _RockposeL;
 
     public GameObject RingObject;
     private GameObject _savingRing;
@@ -79,14 +78,14 @@ public class CalculatetheHandGesture : MonoBehaviour
             //Make sure just Spawn 1 cube
             spawnObj();
         }
-        else if (_Rockpose.Active == false)
+        else if (_RockposeR.Active == false && _RockposeL.Active == false)
         {
             //Cannot Detect the hand the CenterPoint will disappear
             _savingRing.SetActive(false);
             lostHandPosition();
             Debug.Log("Active the sphere = false");
         }
-        else if (_Rockpose.Active == true)
+        else if (_RockposeR.Active == true && _RockposeL.Active == true)
         {
             //Detecting the hand the CenterPoint will show
             _savingRing.SetActive(true);
@@ -101,7 +100,7 @@ public class CalculatetheHandGesture : MonoBehaviour
         //Tracking the conditions & Spawn 1 cube
         //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
         //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
-        if (_Rockpose.Active == true)
+        if (_RockposeR.Active == true && _RockposeL.Active == true)
         {
             isSpawned = true;
             _savingRing = Instantiate(RingObject, centerPoint, Quaternion.identity);
@@ -139,12 +138,12 @@ public class CalculatetheHandGesture : MonoBehaviour
         //_RightJointPose[0] = _RightHandState.GetJointPose(handJoint[0]);
         //_LeftJointPose[0] = _LeftHandState.GetJointPose(handJoint[0]);
 
-        _RhandednessState = Handedness.Right;
+        //_RhandednessState = Handedness.Right;
 
 
         //if(_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
         //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
-        if (_Rockpose.Active == true)
+        if (_RockposeR.Active == true && _RockposeL.Active == true)
         {
             _RHandPosition = _rwrist.position;
             Debug.Log("R:Center: " + _RHandPosition);
@@ -207,7 +206,7 @@ public class CalculatetheHandGesture : MonoBehaviour
 
         //Moving Forward the Car
         //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab && _Langle < 20 && _Rangle < 20)
-        if (_Rockpose.Active == true)
+        if (_RockposeR.Active == true && _RockposeL.Active == true)
         {
             _Command.Send("1");
         }
@@ -218,7 +217,7 @@ public class CalculatetheHandGesture : MonoBehaviour
         isGettingPosition = true;
         //if(_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
         //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
-        if (_Rockpose.Active == true)
+        if (_RockposeR.Active == true && _RockposeL.Active == true)
         {
             _RStartingPoint = centerPoint -  _rwrist.position;
             Debug.Log("RightHandFirstPosition: " + _RStartingPoint);
