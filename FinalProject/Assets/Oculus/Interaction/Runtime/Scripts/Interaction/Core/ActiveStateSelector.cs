@@ -51,21 +51,22 @@ namespace Oculus.Interaction
 
         protected virtual void Update()
         {
-            if (_selecting != ActiveState.Active)
-            {
+            //if (_selecting != ActiveState.Active)
+            //{
                 _selecting = ActiveState.Active;
                 if (_selecting)
                 {
-                    WhenSelected();
-
                     isUsing = true;
+                    Debug.Log(gameObject.name + " " + isUsing);
+                    WhenSelected();
                 }
                 else
                 {
-                    WhenUnselected();
                     isUsing = false;
+                    Debug.Log(gameObject.name + " " + isUsing);
+                    WhenUnselected();
                 }
-            }
+            //}
         }
 
         #region Inject
