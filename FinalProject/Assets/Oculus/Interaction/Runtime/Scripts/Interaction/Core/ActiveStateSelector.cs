@@ -33,7 +33,6 @@ namespace Oculus.Interaction
         protected IActiveState ActiveState { get; private set; }
 
         private bool _selecting = false;
-        public bool isUsing;
 
         public event Action WhenSelected = delegate { };
         public event Action WhenUnselected = delegate { };
@@ -46,27 +45,22 @@ namespace Oculus.Interaction
         protected virtual void Start()
         {
             this.AssertField(ActiveState, nameof(ActiveState));
-            isUsing = false;
         }
 
         protected virtual void Update()
         {
-            //if (_selecting != ActiveState.Active)
-            //{
+            if (_selecting != ActiveState.Active)
+            {
                 _selecting = ActiveState.Active;
                 if (_selecting)
                 {
-                    isUsing = true;
-                    Debug.Log(gameObject.name + " " + isUsing);
                     WhenSelected();
                 }
                 else
                 {
-                    isUsing = false;
-                    Debug.Log(gameObject.name + " " + isUsing);
                     WhenUnselected();
                 }
-            //}
+            }
         }
 
         #region Inject
