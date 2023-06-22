@@ -8344,8 +8344,7 @@ MonoBehaviour:
   _hand: {fileID: 378815254}
   _fingerFeatureStateProvider: {fileID: 1229476567}
   _shapes:
-  - {fileID: 11400000, guid: 3c87ada45140632468cc371ffdada246, type: 2}
-  - {fileID: 11400000, guid: f4bd1264636288c4c8322cdb04ae93b2, type: 2}
+  - {fileID: 11400000, guid: 55734ff6ac9c48443ab37831fdd69d7b, type: 2}
 --- !u!114 &378815251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9133,8 +9132,7 @@ MonoBehaviour:
   _hand: {fileID: 437171619}
   _fingerFeatureStateProvider: {fileID: 1229476569}
   _shapes:
-  - {fileID: 11400000, guid: 3c87ada45140632468cc371ffdada246, type: 2}
-  - {fileID: 11400000, guid: f4bd1264636288c4c8322cdb04ae93b2, type: 2}
+  - {fileID: 11400000, guid: 55734ff6ac9c48443ab37831fdd69d7b, type: 2}
 --- !u!114 &437171616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9547,6 +9545,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CarIpAddress: 192.168.1.3/gpio/
   handEnum: 0
+  _stopPoseR: {fileID: 302849292}
+  _stopPoseL: {fileID: 929364173}
+  cal: {fileID: 858609439}
 --- !u!4 &446492217
 Transform:
   m_ObjectHideFlags: 0

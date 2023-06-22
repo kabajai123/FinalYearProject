@@ -196,12 +196,14 @@ public class CalculatetheHandGesture : MonoBehaviour
         if (_Rangle > 20 && _Rangle < 89 && _KeepTrackRPosition[listKeepTrackRCount - 1].y > 0f)
         {
             _Command.Send("4");
+            Debug.LogWarning("Print Command Num" + _Command);
         }
 
         //Turning Right
         if (_Langle > 20 && _Langle < 89 && _KeepTrackLPosition[listKeepTrackLCount - 1].y < 0f)
         {
             _Command.Send("5");
+            Debug.LogWarning("Print Command Num" + _Command);
         }
 
         //Moving Forward the Car
@@ -209,6 +211,7 @@ public class CalculatetheHandGesture : MonoBehaviour
         if (_RockposeR.Active == true && _RockposeL.Active == true)
         {
             _Command.Send("1");
+            Debug.LogWarning("Print Command Num" + _Command);
         }
     }
 

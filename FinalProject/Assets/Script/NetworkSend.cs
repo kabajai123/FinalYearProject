@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using NRKernal;
+using Oculus.Interaction.Input;
+using Oculus.Interaction;
 
 public class NetworkSend : MonoBehaviour
 {
 
     public string CarIpAddress;
-    public HandState _RightHandState;
-    public HandState _LeftHandState;
+    //public HandState _RightHandState;
+    //public HandState _LeftHandState;
 
-    public HandEnum handEnum;
+    //public HandEnum handEnum;
     string input;
+
+    public ActiveStateGroup _stopPoseR;
+    public ActiveStateGroup _stopPoseL;
+
+    public CalculatetheHandGesture cal;
 
     string CheckRepeat = "example";
     
@@ -39,38 +46,40 @@ public class NetworkSend : MonoBehaviour
         //        break;
         //}
 
-        _RightHandState = NRInput.Hands.GetHandState(HandEnum.RightHand);
-        _LeftHandState = NRInput.Hands.GetHandState(HandEnum.LeftHand);
+        //_RightHandState = NRInput.Hands.GetHandState(HandEnum.RightHand);
+        //_LeftHandState = NRInput.Hands.GetHandState(HandEnum.LeftHand);
 
-        var handState = new HandState(handEnum);
-        handState.isTracked = true;
+        //var handState = new HandState(handEnum);
+        //handState.isTracked = true;
 
         //if (handState == null)
         //    return;
-        if (_RightHandState.isTracked == false || _LeftHandState.isTracked == false)
-        {
-            Send("0");
-        }
-        if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Stop && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Stop)
+        //if (cal._RockposeL.Active == false && cal._RockposeR.Active == false)
+        //{
+        //    Send("0");
+        //}
+        //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Stop && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Stop)
+        if (_stopPoseL.Active == false && _stopPoseR.Active == false && cal._RockposeL.Active == false && cal._RockposeR.Active == false)
         {
             //Stopping the Car
             Send("0");
+            Debug.LogWarning("Print Command Num" + input);
         }
-        else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Stop)
+        else if (cal._RockposeR.Active == true && _stopPoseL.Active == true)
         {
             //Back Forward of the Car
             Send("6");
+            Debug.LogWarning("Print Command Num" + input);
         }
               
     }
 
     public void Send(string message)
-    {
-       
+    {       
         if (CheckRepeat.Equals(message)==false) {
-            string my_command = CarIpAddress + message;
-            Debug.Log(my_command);
-            UnityWebRequest www = UnityWebRequest.Get(my_command);
+            input = CarIpAddress + message;
+            Debug.Log(input);
+            UnityWebRequest www = UnityWebRequest.Get(input);
             CheckRepeat = message;
             www.SendWebRequest();
         //yield return www.SendWebRequest();
