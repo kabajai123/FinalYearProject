@@ -14,7 +14,7 @@ public class NetworkSend : MonoBehaviour
     //public HandState _LeftHandState;
 
     //public HandEnum handEnum;
-    string input;
+    public string input;
 
     public ActiveStateGroup _stopPoseR;
     public ActiveStateGroup _stopPoseL;
@@ -65,7 +65,15 @@ public class NetworkSend : MonoBehaviour
             Send("0");
             Debug.LogWarning("Print Command Num" + input);
         }
-        else if (cal._RockposeR.Active == true && _stopPoseL.Active == true)
+
+        if (_stopPoseR.Active == true && _stopPoseL.Active == true)
+        {
+            //Back Forward of the Car
+            Send("0");
+            Debug.LogWarning("Print Command Num" + input);
+        }
+
+        if (cal._RockposeR.Active == true && _stopPoseL.Active == true)
         {
             //Back Forward of the Car
             Send("6");
