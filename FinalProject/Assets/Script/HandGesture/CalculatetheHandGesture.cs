@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -208,7 +208,7 @@ public class CalculatetheHandGesture : MonoBehaviour
 
         //Moving Forward the Car
         //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab && _Langle < 20 && _Rangle < 20)
-        if (_RockposeR.Active == true && _RockposeL.Active == true)
+        if (_RockposeR.Active == true && _RockposeL.Active == true && _Langle < 10 &&　_Rangle < 10)
         {
             _Command.Send("1");
             Debug.LogWarning("Print Command Num" + _Command.input);
