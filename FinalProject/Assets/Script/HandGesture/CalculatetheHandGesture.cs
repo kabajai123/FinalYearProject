@@ -192,20 +192,28 @@ public class CalculatetheHandGesture : MonoBehaviour
         _LAngleYText.text = "Left Hand Position Y: " + _KeepTrackLPosition[listKeepTrackLCount - 1].y.ToString();
 
         //Limite the Angle of the Point && Checking the Angle of -+
-        //Turning Left
-        if (_Rangle > 20 && _Rangle < 89 && _KeepTrackRPosition[listKeepTrackRCount - 1].y > 1f)
-        {
-            _Command.Send("4");
-            Debug.LogWarning("Print Command Num" + _Command.input);
-        }
-
         //Turning Right
-        if (_Langle > 20 && _Langle < 89 && _KeepTrackLPosition[listKeepTrackLCount - 1].y < 1f)
+        if (_Rangle > 20 && _Rangle < 89 && _rwrist.position.y < _lwrist.position.y)
         {
             _Command.Send("5");
             Debug.LogWarning("Print Command Num" + _Command.input);
         }
 
+        //Turning Left
+        if (_Langle > 20 && _Langle < 89 && _rwrist.position.y > _lwrist.position.y)
+        {
+            _Command.Send("4");
+            Debug.LogWarning("Print Command Num" + _Command.input);
+        }
+        /*
+        if (_Rangle > 20 && _Rangle < 89 && _rwrist.position.y < _lwrist.position.y) {
+            Debug.Log("rangle work");
+        }
+        if (_Langle > 20 && _Langle < 89 && _rwrist.position.y > _lwrist.position.y)
+        {
+            Debug.Log("langle work");
+        }
+        */
         //Moving Forward the Car
         //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab && _Langle < 20 && _Rangle < 20)
         if (_RockposeR.Active == true && _RockposeL.Active == true && _Langle < 10 &&　_Rangle < 10)

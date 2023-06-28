@@ -90,6 +90,7 @@ public class NetworkSend : MonoBehaviour
             UnityWebRequest www = UnityWebRequest.Get(input);
             CheckRepeat = message;
             www.SendWebRequest();
+            Debug.Log("sended command: "+message); 
         //yield return www.SendWebRequest();
         }
     }

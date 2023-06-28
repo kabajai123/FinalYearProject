@@ -9543,8 +9543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad375ae169d06c54ca3dc34b34d309d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarIpAddress: 192.168.1.3/gpio/
-  handEnum: 0
+  CarIpAddress: 192.168.1.2/gpio/
+  input: 
   _stopPoseR: {fileID: 302849292}
   _stopPoseL: {fileID: 929364173}
   cal: {fileID: 858609439}
@@ -10838,7 +10838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &621608572
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10929,7 +10929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d768e317e912d4ea1212333bee24a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamAddress: http://192.168.1.6:8080/video
+  streamAddress: http://192.168.1.4:8080/video
   showFps: 1
   chunkSize: 4
 --- !u!1 &636333514
