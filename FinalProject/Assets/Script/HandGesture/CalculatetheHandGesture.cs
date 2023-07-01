@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using NRKernal;
-using Oculus.Interaction.Input;
 using Oculus.Interaction;
 
 public class CalculatetheHandGesture : MonoBehaviour
 {
-    //public HandJointID[] handJoint;
-    //public HandEnum handEnum;
-
     public ActiveStateGroup _RockposeR;
     public ActiveStateGroup _RockposeL;
 
@@ -51,31 +46,9 @@ public class CalculatetheHandGesture : MonoBehaviour
         findHand();
         addingPositionList();
 
-        //if (!isSpawned)
-        //{
-        //    //Make sure just Spawn 1 cube
-        //    spawnObj();
-        //}
-        ////else if (_RightHandState.isTracked == false && _RightHandState.currentGesture == HandGesture.None)
-        //else if (_RightHandState.isTracked == false && _RightHandState.currentGesture == HandGesture.None && _LeftHandState.isTracked == false && _LeftHandState.currentGesture == HandGesture.None)
-        //{
-        //    //Cannot Detect the hand the CenterPoint will disappear
-        //    _savingRing.SetActive(false);
-        //    lostHandPosition();
-        //    Debug.Log("Active the sphere = false");
-        //}
-        ////else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
-        //else if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
-        //{
-        //    //Detecting the hand the CenterPoint will show
-        //    _savingRing.SetActive(true);
-        //    driving();
-        //    Debug.Log("Active the sphere = true");
-        //}
-
         if (!isSpawned)
         {
-            //Make sure just Spawn 1 cube
+            //Make sure just Spawn 1 CarRing
             spawnObj();
         }
         else if (_RockposeR.Active == false && _RockposeL.Active == false)
@@ -92,14 +65,11 @@ public class CalculatetheHandGesture : MonoBehaviour
             driving();
             Debug.Log("Active the sphere = true");
         }
-
     }
 
     public void spawnObj()
     {
-        //Tracking the conditions & Spawn 1 cube
-        //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
-        //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
+        //Tracking the conditions & Spawn 1 CarRing
         if (_RockposeR.Active == true && _RockposeL.Active == true)
         {
             isSpawned = true;
@@ -107,12 +77,6 @@ public class CalculatetheHandGesture : MonoBehaviour
             Debug.Log("Spawning a sphere");
         }
     }
-
-    //public HandState _RightHandState;
-    //public HandState _LeftHandState;
-    
-    //public Pose[] _RightJointPose;
-    //public Pose[] _LeftJointPose;
 
     public Transform _rwrist;
     public Transform _lwrist;
@@ -127,22 +91,6 @@ public class CalculatetheHandGesture : MonoBehaviour
 
     public void findHand()
     {
-        //Get Left & Right Hand
-        //_RightHandState = NRInput.Hands.GetHandState(HandEnum.RightHand);
-        //_LeftHandState = NRInput.Hands.GetHandState(HandEnum.LeftHand);
-
-        //var handState = new HandState(handEnum);
-        //handState.isTracked = true;
-
-        //Get Right Hand Joint ID position
-        //_RightJointPose[0] = _RightHandState.GetJointPose(handJoint[0]);
-        //_LeftJointPose[0] = _LeftHandState.GetJointPose(handJoint[0]);
-
-        //_RhandednessState = Handedness.Right;
-
-
-        //if(_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
-        //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
         if (_RockposeR.Active == true && _RockposeL.Active == true)
         {
             _RHandPosition = _rwrist.position;
@@ -205,17 +153,8 @@ public class CalculatetheHandGesture : MonoBehaviour
             _Command.Send("4");
             Debug.LogWarning("Print Command Num" + _Command.input);
         }
-        /*
-        if (_Rangle > 20 && _Rangle < 89 && _rwrist.position.y < _lwrist.position.y) {
-            Debug.Log("rangle work");
-        }
-        if (_Langle > 20 && _Langle < 89 && _rwrist.position.y > _lwrist.position.y)
-        {
-            Debug.Log("langle work");
-        }
-        */
+
         //Moving Forward the Car
-        //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab && _Langle < 20 && _Rangle < 20)
         if (_RockposeR.Active == true && _RockposeL.Active == true && _Langle < 10 &&　_Rangle < 10)
         {
             _Command.Send("1");
@@ -226,8 +165,6 @@ public class CalculatetheHandGesture : MonoBehaviour
     public void getHandPositionFirst()
     {
         isGettingPosition = true;
-        //if(_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab)
-        //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Grab && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Grab)
         if (_RockposeR.Active == true && _RockposeL.Active == true)
         {
             _RStartingPoint = centerPoint -  _rwrist.position;

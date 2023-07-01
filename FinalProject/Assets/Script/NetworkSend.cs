@@ -2,18 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using NRKernal;
-using Oculus.Interaction.Input;
 using Oculus.Interaction;
 
 public class NetworkSend : MonoBehaviour
 {
-
     public string CarIpAddress;
-    //public HandState _RightHandState;
-    //public HandState _LeftHandState;
-
-    //public HandEnum handEnum;
     public string input;
 
     public ActiveStateGroup _stopPoseR;
@@ -78,20 +71,19 @@ public class NetworkSend : MonoBehaviour
             //Back Forward of the Car
             Send("6");
             Debug.LogWarning("Print Command Num" + input);
-        }
-              
+        }   
     }
 
     public void Send(string message)
     {       
-        if (CheckRepeat.Equals(message)==false) {
+        if (CheckRepeat.Equals(message)==false)
+        {
             input = CarIpAddress + message;
             Debug.Log(input);
             UnityWebRequest www = UnityWebRequest.Get(input);
             CheckRepeat = message;
             www.SendWebRequest();
             Debug.Log("sended command: "+message); 
-        //yield return www.SendWebRequest();
         }
     }
 }
