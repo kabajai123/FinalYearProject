@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using NRKernal;
 
+
 public class UiFolCamera : MonoBehaviour
 {
-    private Transform cameraCenter
+    public OVRCameraRig overCameraRig;
+    Transform cameraCenter;
+    private void Start()
     {
-        get
-        {
-            return NRInput.CameraCenter;
-        }
+        cameraCenter = overCameraRig.centerEyeAnchor;
     }
 
     Vector3 position;
