@@ -131,13 +131,13 @@ public class CalculatetheHandGesture : MonoBehaviour
         _Langle = Vector3.Angle(_LStartingPoint, _LDirection);
 
         //Updating the Angle Text
-        _LAngleText.text = "LeftAngle: " + _Langle.ToString();
-        _RAngleText.text = "RightAngle: " + _Rangle.ToString();
+        //_LAngleText.text = "LeftAngle: " + _Langle.ToString();
+        //_RAngleText.text = "RightAngle: " + _Rangle.ToString();
 
         Debug.Log("The angle range: " + _Rangle);
 
-        _RAngleYText.text = "Righ Hand Position Y: " + _KeepTrackRPosition[listKeepTrackRCount - 1].y.ToString();
-        _LAngleYText.text = "Left Hand Position Y: " + _KeepTrackLPosition[listKeepTrackLCount - 1].y.ToString();
+        //_RAngleYText.text = "Righ Hand Position Y: " + _KeepTrackRPosition[listKeepTrackRCount - 1].y.ToString();
+        //_LAngleYText.text = "Left Hand Position Y: " + _KeepTrackLPosition[listKeepTrackLCount - 1].y.ToString();
 
         //Limite the Angle of the Point && Checking the Angle of -+
         //Turning Right
@@ -180,16 +180,16 @@ public class CalculatetheHandGesture : MonoBehaviour
         isGettingPosition = false;
 
         _Rangle = 0;
-        _RAngleText.text = "RightAngle: " + _Rangle.ToString();
+       // _RAngleText.text = "RightAngle: " + _Rangle.ToString();
 
         _Langle = 0;
-        _LAngleText.text = "LeftAngle: " + _Langle.ToString();
+        //_LAngleText.text = "LeftAngle: " + _Langle.ToString();
 
         _RDirection.y = 0f;
-        _RAngleYText.text = "Right Hand Position Y: " + _KeepTrackRPosition[listKeepTrackRCount - 1].y.ToString();
+        //_RAngleYText.text = "Right Hand Position Y: " + _KeepTrackRPosition[listKeepTrackRCount - 1].y.ToString();
 
         _LDirection.y = 0f;
-        _LAngleYText.text = "Left Hand Position Y: " + _KeepTrackLPosition[listKeepTrackLCount - 1].y.ToString();
+        //_LAngleYText.text = "Left Hand Position Y: " + _KeepTrackLPosition[listKeepTrackLCount - 1].y.ToString();
     }
 
     public void addingPositionList()
