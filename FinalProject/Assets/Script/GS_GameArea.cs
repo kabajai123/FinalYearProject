@@ -5,22 +5,29 @@ using UnityEngine;
 public class GS_GameArea : MonoBehaviour
 {
     public GameObject target;
-    public GameObject hints;
+    public GameObject block;
     public float x, z;
     public string Area = "";
     public float RandomArea;
 
-    
+    public Vector3 center;
+    public float half;
+
     
     private void Start()
     {
         RandomL();
+        GameObject xblock = Instantiate(block, center, Quaternion.identity);
+        GameObject zblock = Instantiate(block, center, Quaternion.identity);
+        xblock.transform.localScale = new Vector3(half*2, 0.2f,0.2f);
+        zblock.transform.localScale = new Vector3(0.2f, 0.2f, half * 2);
     }
+    public List<int> list = new List<int>();
     void RandomL()
     {
         int Rand;
         int Lenght = 4;
-        List<int> list = new List<int>();
+        
         list = new List<int>(new int[Lenght]);
 
         for (int j = 0; j < Lenght; j++)
@@ -38,42 +45,27 @@ public class GS_GameArea : MonoBehaviour
         }
 
     }
-
-    //void Follow() {
-
-    //    switch () {
-    //        case "Area A": 
-    //            break;
-    //        case "Area B":
-    //            break;
-    //        case "Area C":
-    //            break;
-    //        case "Area D":
-    //            break;
-    //    }
-
-    //}
-
+    
     void Update()
     {
         x = target.transform.position.x;
         z = target.transform.position.z;
-        if (x > 0 && z > 0)
+        if (x > center.x && z > center.z)
         {
             Area = "Area A";
-
+            
         }
-        if (0 > x && x > -50 && z > 0)
+        if (x < center.x && z > center.z)
         {
             Area = "area B";
 
         }
-        if (x > 0 && 0 > z && z > -50)
+        if (x > center.x && z < center.z)
         {
             Area = "Area C";
 
         }
-        if (0 > x && x > -50 && 0 > z && z > -50)
+        if (x < center.x && z < center.z)
         {
             Area = "Area D";
 
