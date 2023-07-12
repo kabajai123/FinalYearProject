@@ -11,19 +11,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CreateRacingWay.unity
     guid: 7f62179c59d9be44b8d090e056fc000c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Setting.unity
     guid: 58d00c3d0c47e684fb98adc22d0f459a
   - enabled: 0
     path: Assets/Scenes/TutorialScene.unity
     guid: 7b2b481235d496a4991799dcd6e73f0d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/ModeChooseMenu.unity
     guid: d833b934648e49d458b6e18e5ac63306
+  - enabled: 1
+    path: Assets/Scenes/Room.unity
+    guid: 3d674ac039f4841068b4abc7eb04d76f
   - enabled: 0
     path: Assets/Scenes/MainCarScene.unity
     guid: 299e99103bb55aa49bfca1bba96a3e10
-  - enabled: 1
+  - enabled: 0
     path: Assets/NRSDK/Demos/HandTracking.unity
     guid: 7d33c4a3bc8da9745acac0e1d62c44bf
   m_configObjects:
