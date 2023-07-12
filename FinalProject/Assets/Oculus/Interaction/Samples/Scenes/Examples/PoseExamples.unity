@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44202968, g: 0.45022535, b: 0.47379774, a: 1}
+  m_IndirectSpecularColor: {r: 0.44202876, g: 0.45022064, b: 0.47379425, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7637,7 +7637,7 @@ GameObject:
   - component: {fileID: 3005601683362837090}
   - component: {fileID: 3005601683362837095}
   m_Layer: 0
-  m_Name: Fuck
+  m_Name: RockPoseRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

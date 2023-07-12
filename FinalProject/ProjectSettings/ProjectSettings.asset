@@ -46,7 +46,7 @@ PlayerSettings:
   defaultScreenHeight: 768
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
-  m_StereoRenderingPath: 0
+  m_StereoRenderingPath: 2
   m_ActiveColorSpace: 1
   m_MTRendering: 1
   mipStripping: 0
@@ -91,7 +91,7 @@ PlayerSettings:
   resizableWindow: 0
   useMacAppStoreValidation: 0
   macAppStoreCategory: public.app-category.games
-  gpuSkinning: 0
+  gpuSkinning: 1
   xboxPIXTextureCapture: 0
   xboxEnableAvatar: 0
   xboxEnableKinect: 0
@@ -137,7 +137,7 @@ PlayerSettings:
   bundleVersion: 0.1.1
   preloadedAssets:
   - {fileID: 11400000, guid: 1f0a0b704a165e0469569b7119e82c0c, type: 2}
-  - {fileID: 11400000, guid: 038bd48172c208f47b700d691c268ebf, type: 2}
+  - {fileID: 0}
   - {fileID: -3019095421971326365, guid: 8c8084c11a743794387bdb1df5c6b3d1, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -166,7 +166,7 @@ PlayerSettings:
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 26
+  AndroidMinSdkVersion: 29
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 0
   aotOptions: 
@@ -792,7 +792,8 @@ PlayerSettings:
   scriptingDefineSymbols: {}
   additionalCompilerArguments: {}
   platformArchitecture: {}
-  scriptingBackend: {}
+  scriptingBackend:
+    Android: 0
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}
