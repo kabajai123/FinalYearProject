@@ -58,7 +58,7 @@ public class MenuScript : MonoBehaviour
 
     public void EasyTutorial()
     {
-        SceneManager.LoadScene("MainCarScene");
+        SceneManager.LoadScene("Room");
     }
 
     public GameObject _PVPObject;
