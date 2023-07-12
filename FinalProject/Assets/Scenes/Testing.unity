@@ -366,6 +366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2068384256}
   - component: {fileID: 2068384255}
+  - component: {fileID: 2068384257}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -380,7 +381,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068384254}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4769dc382bda8814badc424e89dc33f0, type: 3}
   m_Name: 
@@ -404,6 +405,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2068384257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068384254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad375ae169d06c54ca3dc34b34d309d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CarIpAddress: http://192.168.1.2/gpio/
+  input: 
+  _stopPoseR: {fileID: 0}
+  _stopPoseL: {fileID: 0}
+  cal: {fileID: 0}
 --- !u!1001 &7540095400918943000
 PrefabInstance:
   m_ObjectHideFlags: 0

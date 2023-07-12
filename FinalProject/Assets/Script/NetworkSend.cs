@@ -16,34 +16,30 @@ public class NetworkSend : MonoBehaviour
 
     string CheckRepeat = "example";
     
-    private void FixedUpdate()
+    private void Update()
     {
-        //input = Input.inputString;
+        input = Input.inputString;
 
-        //switch (input)
-        //{
-        //    case "w":
-        //        Send("1");
-        //        break;
-        //    case "s":
-        //        Send("6");
-        //        break;
-        //    case "a":
-        //        Send("2");
-        //        break;
-        //    case "d":
-        //        Send("3");
-        //        break;
-        //    case "p":
-        //        Send("0");
-        //        break;
-        //}
+        switch (input)
+        {
+            case "w":
+                Send("1");
+                break;
+            case "s":
+                Send("6");
+                break;
+            case "a":
+                Send("2");
+                break;
+            case "d":
+                Send("5");
+                break;
+            case "p":
+                Send("0");
+                break;
+            
+        }
 
-        //_RightHandState = NRInput.Hands.GetHandState(HandEnum.RightHand);
-        //_LeftHandState = NRInput.Hands.GetHandState(HandEnum.LeftHand);
-
-        //var handState = new HandState(handEnum);
-        //handState.isTracked = true;
 
         //if (handState == null)
         //    return;
@@ -52,26 +48,26 @@ public class NetworkSend : MonoBehaviour
         //    Send("0");
         //}
         //if (_RightHandState.isTracked == true && _RightHandState.currentGesture == HandGesture.Stop && _LeftHandState.isTracked == true && _LeftHandState.currentGesture == HandGesture.Stop)
-        if (_stopPoseL.Active == false && _stopPoseR.Active == false && cal._RockposeL.Active == false && cal._RockposeR.Active == false)
-        {
-            //Stopping the Car
-            Send("0");
-            Debug.LogWarning("Print Command Num" + input);
-        }
+        //if (_stopPoseL.Active == false && _stopPoseR.Active == false && cal._RockposeL.Active == false && cal._RockposeR.Active == false)
+        //{
+        //    //Stopping the Car
+        //    Send("0");
+        //    Debug.LogWarning("Print Command Num" + input);
+        //}
 
-        if (_stopPoseR.Active == true && _stopPoseL.Active == true)
-        {
-            //Back Forward of the Car
-            Send("0");
-            Debug.LogWarning("Print Command Num" + input);
-        }
+        //if (_stopPoseR.Active == true && _stopPoseL.Active == true)
+        //{
+        //    //Back Forward of the Car
+        //    Send("0");
+        //    Debug.LogWarning("Print Command Num" + input);
+        //}
 
-        if (cal._RockposeR.Active == true && _stopPoseL.Active == true)
-        {
-            //Back Forward of the Car
-            Send("6");
-            Debug.LogWarning("Print Command Num" + input);
-        }   
+        //if (cal._RockposeR.Active == true && _stopPoseL.Active == true)
+        //{
+        //    //Back Forward of the Car
+        //    Send("6");
+        //    Debug.LogWarning("Print Command Num" + input);
+        //}   
     }
 
     public void Send(string message)
