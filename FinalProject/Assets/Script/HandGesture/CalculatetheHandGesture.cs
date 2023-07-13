@@ -26,10 +26,10 @@ public class CalculatetheHandGesture : MonoBehaviour
     public List<Vector3> _KeepTrackRPosition;
     public List<Vector3> _KeepTrackLPosition;
 
-    public TMP_Text _RAngleText;
-    public TMP_Text _RAngleYText;
-    public TMP_Text _LAngleYText;
-    public TMP_Text _LAngleText;
+    //public TMP_Text _RAngleText;
+    //public TMP_Text _RAngleYText;
+    //public TMP_Text _LAngleYText;
+    //public TMP_Text _LAngleText;
 
     public bool isSpawned = false;
 

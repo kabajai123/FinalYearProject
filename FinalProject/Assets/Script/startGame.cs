@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class startGame : MonoBehaviour
 {
-    [SerializeField]
-    bool isRelease = false;
-
-    [SerializeField]
-    bool isSelected = false;
+    public bool isRelease = false;
+    public bool isSelected = false;
 
     public NetworkSend _command;
 

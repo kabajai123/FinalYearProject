@@ -15,9 +15,8 @@ public class GS_GameArea : MonoBehaviour
     public float half;
 
     public GameObject Arrow;
-    public int score=0;
 
-    public GameObject monster;
+    public GameObject[] monster;
     public float monsterNum=0;
 
     public List<int> list = new List<int>();
@@ -86,14 +85,14 @@ public class GS_GameArea : MonoBehaviour
             case "Area A":
                 if (list[0] == 1) {
                     list.RemoveAt(0);
-                    score++;
+                    Score.instance.addScore();
                     status();
                 }
                 break;
             case "Area B":
                 if (list[0] == 2)
                 {
-                    score++;
+                    Score.instance.addScore();
                     list.RemoveAt(0);
                     status();
                 }
@@ -101,7 +100,7 @@ public class GS_GameArea : MonoBehaviour
             case "Area C":
                 if (list[0] == 3)
                 {
-                    score++;
+                    Score.instance.addScore();
                     list.RemoveAt(0);
                     status();
                 }
@@ -109,7 +108,7 @@ public class GS_GameArea : MonoBehaviour
             case "Area D":
                 if (list[0] == 4)
                 {
-                    score++;
+                    Score.instance.addScore();
                     list.RemoveAt(0);
                     status();
                 }
@@ -127,7 +126,10 @@ public class GS_GameArea : MonoBehaviour
             {
                 float xx = Random.Range(500 + -half, 500 + half);
                 float yy = Random.Range(500 + -half, 500 + half);
-                Instantiate(monster, new Vector3(xx, 500, yy), Quaternion.identity);
+                for(int i = 0; i < 2; i++)
+                {
+                    Instantiate(monster[i], new Vector3(xx, 500, yy), Quaternion.identity);
+                }
                 timer = 0;
                 monsterNum++;
             }
