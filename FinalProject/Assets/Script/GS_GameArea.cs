@@ -65,16 +65,16 @@ public class GS_GameArea : MonoBehaviour
         }
         switch (list[0]) {
             case 1:
-                Arrow.transform.position = new Vector3(500 + half/2, 505, 500 + half/2);
+                Arrow.transform.position = new Vector3(center.x + half/2, 505, center.z + half/2);
                 break;
             case 2:
-                Arrow.transform.position = new Vector3(500 - half/2, 505, 500 + half/2);
+                Arrow.transform.position = new Vector3(center.x - half/2, 505, center.z + half/2);
                 break;
             case 3:
-                Arrow.transform.position = new Vector3(500 + half/2, 505, 500 - half/2);
+                Arrow.transform.position = new Vector3(center.x + half/2, 505, center.z - half/2);
                 break;
             case 4:
-                Arrow.transform.position = new Vector3(500 - half/2, 505, 500 - half/2);
+                Arrow.transform.position = new Vector3(center.x - half/2, 505, center.z - half/2);
                 break;
         }
         
@@ -120,16 +120,16 @@ public class GS_GameArea : MonoBehaviour
     void monsterFunction()
     {
         //spawn monster
-        if (monsterNum < 5)
+        if (monsterNum < 10)
         {
             if (timer > 10)
             {
+
+                int monRand = Random.Range(0, 4);
                 float xx = Random.Range(500 + -half, 500 + half);
                 float yy = Random.Range(500 + -half, 500 + half);
-                for(int i = 0; i < 2; i++)
-                {
-                    Instantiate(monster[i], new Vector3(xx, 500, yy), Quaternion.identity);
-                }
+                Instantiate(monster[monRand], new Vector3(xx, 500, yy), Quaternion.identity);
+                
                 timer = 0;
                 monsterNum++;
             }

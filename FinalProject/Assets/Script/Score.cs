@@ -22,7 +22,7 @@ public class Score : MonoBehaviour
     {
         highscore = PlayerPrefs.GetInt("highscore", 0);
         scoreText.text = "Scores: " + score.ToString();
-        highScoreText.text = "HIGHSCORE: " + highscore.ToString();
+        highScoreText.text = "HIGHSCORE: " + highscore.ToString(); ;
     }
 
     public void addScore()

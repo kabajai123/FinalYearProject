@@ -29,7 +29,7 @@ public class NetworkSend : MonoBehaviour
                 Send("6");
                 break;
             case "a":
-                Send("2");
+                Send("4");
                 break;
             case "d":
                 Send("5");
@@ -37,7 +37,7 @@ public class NetworkSend : MonoBehaviour
             case "p":
                 Send("0");
                 break;
-            
+
         }
 
 
@@ -55,19 +55,19 @@ public class NetworkSend : MonoBehaviour
         //    Debug.LogWarning("Print Command Num" + input);
         //}
 
-        //if (_stopPoseR.Active == true && _stopPoseL.Active == true)
-        //{
-        //    //Back Forward of the Car
-        //    Send("0");
-        //    Debug.LogWarning("Print Command Num" + input);
-        //}
+        if (_stopPoseR.Active == true && _stopPoseL.Active == true)
+        {
+            //Back Forward of the Car
+            Send("0");
+            Debug.LogWarning("Print Command Num" + input);
+        }
 
-        //if (cal._RockposeR.Active == true && _stopPoseL.Active == true)
-        //{
-        //    //Back Forward of the Car
-        //    Send("6");
-        //    Debug.LogWarning("Print Command Num" + input);
-        //}   
+        if (cal._RockposeR.Active == true && _stopPoseL.Active == true)
+        {
+            //Back Forward of the Car
+            Send("6");
+            Debug.LogWarning("Print Command Num" + input);
+        }
     }
 
     public void Send(string message)
